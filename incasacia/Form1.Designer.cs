@@ -29,48 +29,48 @@
 		private void InitializeComponent()
 		{
 			this.a1 = new System.Windows.Forms.TabControl();
-			this.Рубли = new System.Windows.Forms.TabPage();
-			this.Доллары = new System.Windows.Forms.TabPage();
+			this.rub = new System.Windows.Forms.TabPage();
+			this.dol = new System.Windows.Forms.TabPage();
 			this.listBox1 = new System.Windows.Forms.ListBox();
-			this.Леи = new System.Windows.Forms.TabPage();
-			this.Настройки = new System.Windows.Forms.TabPage();
+			this.lei = new System.Windows.Forms.TabPage();
+			this.settings = new System.Windows.Forms.TabPage();
 			this.a1.SuspendLayout();
-			this.Рубли.SuspendLayout();
+			this.rub.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// a1
 			// 
 			this.a1.AccessibleName = "";
-			this.a1.Controls.Add(this.Рубли);
-			this.a1.Controls.Add(this.Доллары);
-			this.a1.Controls.Add(this.Леи);
-			this.a1.Controls.Add(this.Настройки);
-			this.a1.Location = new System.Drawing.Point(-3, -4);
+			this.a1.Controls.Add(this.rub);
+			this.a1.Controls.Add(this.dol);
+			this.a1.Controls.Add(this.lei);
+			this.a1.Controls.Add(this.settings);
+			this.a1.Location = new System.Drawing.Point(1, 1);
 			this.a1.Name = "a1";
 			this.a1.SelectedIndex = 0;
 			this.a1.Size = new System.Drawing.Size(802, 454);
 			this.a1.TabIndex = 0;
 			// 
-			// Рубли
+			// rub
 			// 
-			this.Рубли.Controls.Add(this.listBox1);
-			this.Рубли.Location = new System.Drawing.Point(4, 22);
-			this.Рубли.Name = "Рубли";
-			this.Рубли.Padding = new System.Windows.Forms.Padding(3);
-			this.Рубли.Size = new System.Drawing.Size(794, 428);
-			this.Рубли.TabIndex = 0;
-			this.Рубли.Text = "tabPage1";
-			this.Рубли.UseVisualStyleBackColor = true;
+			this.rub.Controls.Add(this.listBox1);
+			this.rub.Location = new System.Drawing.Point(4, 22);
+			this.rub.Name = "rub";
+			this.rub.Padding = new System.Windows.Forms.Padding(3);
+			this.rub.Size = new System.Drawing.Size(794, 428);
+			this.rub.TabIndex = 0;
+			this.rub.Text = "Рубли";
+			this.rub.UseVisualStyleBackColor = true;
 			// 
-			// Доллары
+			// dol
 			// 
-			this.Доллары.Location = new System.Drawing.Point(4, 22);
-			this.Доллары.Name = "Доллары";
-			this.Доллары.Padding = new System.Windows.Forms.Padding(3);
-			this.Доллары.Size = new System.Drawing.Size(794, 428);
-			this.Доллары.TabIndex = 1;
-			this.Доллары.Text = "tabPage2";
-			this.Доллары.UseVisualStyleBackColor = true;
+			this.dol.Location = new System.Drawing.Point(4, 22);
+			this.dol.Name = "dol";
+			this.dol.Padding = new System.Windows.Forms.Padding(3);
+			this.dol.Size = new System.Drawing.Size(794, 428);
+			this.dol.TabIndex = 1;
+			this.dol.Text = "Доллары";
+			this.dol.UseVisualStyleBackColor = true;
 			// 
 			// listBox1
 			// 
@@ -80,25 +80,25 @@
 			this.listBox1.Size = new System.Drawing.Size(175, 82);
 			this.listBox1.TabIndex = 0;
 			// 
-			// Леи
+			// lei
 			// 
-			this.Леи.Location = new System.Drawing.Point(4, 22);
-			this.Леи.Name = "Леи";
-			this.Леи.Padding = new System.Windows.Forms.Padding(3);
-			this.Леи.Size = new System.Drawing.Size(794, 428);
-			this.Леи.TabIndex = 2;
-			this.Леи.Text = "tabPage3";
-			this.Леи.UseVisualStyleBackColor = true;
+			this.lei.Location = new System.Drawing.Point(4, 22);
+			this.lei.Name = "lei";
+			this.lei.Padding = new System.Windows.Forms.Padding(3);
+			this.lei.Size = new System.Drawing.Size(794, 428);
+			this.lei.TabIndex = 2;
+			this.lei.Text = "Леи";
+			this.lei.UseVisualStyleBackColor = true;
 			// 
-			// Настройки
+			// settings
 			// 
-			this.Настройки.Location = new System.Drawing.Point(4, 22);
-			this.Настройки.Name = "Настройки";
-			this.Настройки.Padding = new System.Windows.Forms.Padding(3);
-			this.Настройки.Size = new System.Drawing.Size(794, 428);
-			this.Настройки.TabIndex = 3;
-			this.Настройки.Text = "tabPage4";
-			this.Настройки.UseVisualStyleBackColor = true;
+			this.settings.Location = new System.Drawing.Point(4, 22);
+			this.settings.Name = "settings";
+			this.settings.Padding = new System.Windows.Forms.Padding(3);
+			this.settings.Size = new System.Drawing.Size(794, 428);
+			this.settings.TabIndex = 3;
+			this.settings.Text = "Настройки";
+			this.settings.UseVisualStyleBackColor = true;
 			// 
 			// Form1
 			// 
@@ -109,18 +109,18 @@
 			this.Name = "Form1";
 			this.Text = "Form1";
 			this.a1.ResumeLayout(false);
-			this.Рубли.ResumeLayout(false);
+			this.rub.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
-		private System.Windows.Forms.TabPage Рубли;
-		private System.Windows.Forms.TabPage Доллары;
+		private System.Windows.Forms.TabPage rub;
+		private System.Windows.Forms.TabPage dol;
 		private System.Windows.Forms.ListBox listBox1;
 		private System.Windows.Forms.TabControl a1;
-		private System.Windows.Forms.TabPage Леи;
-		private System.Windows.Forms.TabPage Настройки;
+		private System.Windows.Forms.TabPage lei;
+		private System.Windows.Forms.TabPage settings;
 	}
 }
 
