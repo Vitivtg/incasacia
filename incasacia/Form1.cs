@@ -10,11 +10,27 @@ using System.Windows.Forms;
 
 namespace incasacia
 {
-	public partial class Form1 : Form
+	public partial class incas : Form
 	{
-		public Form1()
+		public incas()
 		{
-			InitializeComponent();
+			InitializeComponent();			
 		}
+
+		private void save_Click(object sender, EventArgs e)
+		{
+			bool isLocked = !azs.Enabled; // Если заблокированы, значит true
+
+			// Изменяем состояние всех текстовых полей
+			azs.Enabled = isLocked;
+			company.Enabled = isLocked;
+			bank_name.Enabled = isLocked;
+			schet.Enabled = isLocked;
+
+			// Меняем текст кнопки
+			save.Text = isLocked ? "Сохранить" : "Изменить";
+		}
+
+		
 	}
 }
