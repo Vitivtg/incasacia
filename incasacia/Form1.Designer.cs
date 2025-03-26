@@ -30,14 +30,19 @@
 		{
 			this.setings = new System.Windows.Forms.TabControl();
 			this.settings = new System.Windows.Forms.TabPage();
-			this.save = new System.Windows.Forms.Button();
-			this.schet = new System.Windows.Forms.TextBox();
-			this.schet_label = new System.Windows.Forms.Label();
-			this.bank_name = new System.Windows.Forms.TextBox();
-			this.bank_label = new System.Windows.Forms.Label();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.schet_lei = new System.Windows.Forms.TextBox();
 			this.company = new System.Windows.Forms.TextBox();
-			this.company_label = new System.Windows.Forms.Label();
+			this.bank_name = new System.Windows.Forms.TextBox();
+			this.schet_rub = new System.Windows.Forms.TextBox();
 			this.azs = new System.Windows.Forms.TextBox();
+			this.schet_usd = new System.Windows.Forms.TextBox();
+			this.schet_usd_label = new System.Windows.Forms.Label();
+			this.schet_lei_label = new System.Windows.Forms.Label();
+			this.schet_rub_label = new System.Windows.Forms.Label();
+			this.save = new System.Windows.Forms.Button();
+			this.bank_label = new System.Windows.Forms.Label();
+			this.company_label = new System.Windows.Forms.Label();
 			this.azs_label = new System.Windows.Forms.Label();
 			this.dol = new System.Windows.Forms.TabPage();
 			this.lei = new System.Windows.Forms.TabPage();
@@ -72,6 +77,18 @@
 			this.rc5 = new System.Windows.Forms.TextBox();
 			this.r500 = new System.Windows.Forms.TextBox();
 			this.r100 = new System.Windows.Forms.TextBox();
+			this.sum200 = new System.Windows.Forms.TextBox();
+			this.sum100 = new System.Windows.Forms.TextBox();
+			this.sum50 = new System.Windows.Forms.TextBox();
+			this.sum25 = new System.Windows.Forms.TextBox();
+			this.sum10 = new System.Windows.Forms.TextBox();
+			this.sum5 = new System.Windows.Forms.TextBox();
+			this.sum3 = new System.Windows.Forms.TextBox();
+			this.sum1 = new System.Windows.Forms.TextBox();
+			this.sum_rc50 = new System.Windows.Forms.TextBox();
+			this.sum_rc25 = new System.Windows.Forms.TextBox();
+			this.sum_rc10 = new System.Windows.Forms.TextBox();
+			this.sum_rc5 = new System.Windows.Forms.TextBox();
 			this.c5 = new System.Windows.Forms.Label();
 			this.c10 = new System.Windows.Forms.Label();
 			this.c25 = new System.Windows.Forms.Label();
@@ -89,20 +106,9 @@
 			this.bag_label = new System.Windows.Forms.Label();
 			this.date_time = new System.Windows.Forms.DateTimePicker();
 			this.data_label = new System.Windows.Forms.Label();
-			this.sum200 = new System.Windows.Forms.TextBox();
-			this.sum100 = new System.Windows.Forms.TextBox();
-			this.sum50 = new System.Windows.Forms.TextBox();
-			this.sum25 = new System.Windows.Forms.TextBox();
-			this.sum10 = new System.Windows.Forms.TextBox();
-			this.sum5 = new System.Windows.Forms.TextBox();
-			this.sum3 = new System.Windows.Forms.TextBox();
-			this.sum1 = new System.Windows.Forms.TextBox();
-			this.sum_rc50 = new System.Windows.Forms.TextBox();
-			this.sum_rc25 = new System.Windows.Forms.TextBox();
-			this.sum_rc10 = new System.Windows.Forms.TextBox();
-			this.sum_rc5 = new System.Windows.Forms.TextBox();
 			this.setings.SuspendLayout();
 			this.settings.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
 			this.rub.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -123,14 +129,13 @@
 			// settings
 			// 
 			this.settings.BackColor = System.Drawing.Color.DarkGray;
+			this.settings.Controls.Add(this.tableLayoutPanel2);
+			this.settings.Controls.Add(this.schet_usd_label);
+			this.settings.Controls.Add(this.schet_lei_label);
+			this.settings.Controls.Add(this.schet_rub_label);
 			this.settings.Controls.Add(this.save);
-			this.settings.Controls.Add(this.schet);
-			this.settings.Controls.Add(this.schet_label);
-			this.settings.Controls.Add(this.bank_name);
 			this.settings.Controls.Add(this.bank_label);
-			this.settings.Controls.Add(this.company);
 			this.settings.Controls.Add(this.company_label);
-			this.settings.Controls.Add(this.azs);
 			this.settings.Controls.Add(this.azs_label);
 			this.settings.Location = new System.Drawing.Point(4, 22);
 			this.settings.Name = "settings";
@@ -139,13 +144,119 @@
 			this.settings.TabIndex = 0;
 			this.settings.Text = "Настройки";
 			// 
+			// tableLayoutPanel2
+			// 
+			this.tableLayoutPanel2.ColumnCount = 1;
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel2.Controls.Add(this.schet_lei, 0, 4);
+			this.tableLayoutPanel2.Controls.Add(this.company, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.bank_name, 0, 2);
+			this.tableLayoutPanel2.Controls.Add(this.schet_rub, 0, 3);
+			this.tableLayoutPanel2.Controls.Add(this.azs, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.schet_usd, 0, 5);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(230, 23);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			this.tableLayoutPanel2.RowCount = 6;
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(209, 176);
+			this.tableLayoutPanel2.TabIndex = 11;
+			// 
+			// schet_lei
+			// 
+			this.schet_lei.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.schet_lei.Location = new System.Drawing.Point(3, 119);
+			this.schet_lei.Multiline = true;
+			this.schet_lei.Name = "schet_lei";
+			this.schet_lei.Size = new System.Drawing.Size(200, 23);
+			this.schet_lei.TabIndex = 12;
+			// 
+			// company
+			// 
+			this.company.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.company.Location = new System.Drawing.Point(3, 32);
+			this.company.Name = "company";
+			this.company.Size = new System.Drawing.Size(200, 23);
+			this.company.TabIndex = 3;
+			// 
+			// bank_name
+			// 
+			this.bank_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.bank_name.Location = new System.Drawing.Point(3, 61);
+			this.bank_name.Name = "bank_name";
+			this.bank_name.Size = new System.Drawing.Size(200, 23);
+			this.bank_name.TabIndex = 5;
+			// 
+			// schet_rub
+			// 
+			this.schet_rub.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.schet_rub.Location = new System.Drawing.Point(3, 90);
+			this.schet_rub.Name = "schet_rub";
+			this.schet_rub.Size = new System.Drawing.Size(200, 23);
+			this.schet_rub.TabIndex = 7;
+			// 
+			// azs
+			// 
+			this.azs.BackColor = System.Drawing.Color.White;
+			this.azs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.azs.Location = new System.Drawing.Point(3, 3);
+			this.azs.Name = "azs";
+			this.azs.Size = new System.Drawing.Size(200, 23);
+			this.azs.TabIndex = 1;
+			// 
+			// schet_usd
+			// 
+			this.schet_usd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.schet_usd.Location = new System.Drawing.Point(3, 148);
+			this.schet_usd.Multiline = true;
+			this.schet_usd.Name = "schet_usd";
+			this.schet_usd.Size = new System.Drawing.Size(200, 23);
+			this.schet_usd.TabIndex = 13;
+			// 
+			// schet_usd_label
+			// 
+			this.schet_usd_label.AutoSize = true;
+			this.schet_usd_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.schet_usd_label.Location = new System.Drawing.Point(15, 174);
+			this.schet_usd_label.Margin = new System.Windows.Forms.Padding(0);
+			this.schet_usd_label.Name = "schet_usd_label";
+			this.schet_usd_label.Size = new System.Drawing.Size(158, 17);
+			this.schet_usd_label.TabIndex = 10;
+			this.schet_usd_label.Text = "счет долларовый №";
+			// 
+			// schet_lei_label
+			// 
+			this.schet_lei_label.AutoSize = true;
+			this.schet_lei_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.schet_lei_label.Location = new System.Drawing.Point(15, 142);
+			this.schet_lei_label.Margin = new System.Windows.Forms.Padding(0);
+			this.schet_lei_label.Name = "schet_lei_label";
+			this.schet_lei_label.Size = new System.Drawing.Size(122, 17);
+			this.schet_lei_label.TabIndex = 9;
+			this.schet_lei_label.Text = "счет леевый №";
+			// 
+			// schet_rub_label
+			// 
+			this.schet_rub_label.AutoSize = true;
+			this.schet_rub_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.schet_rub_label.Location = new System.Drawing.Point(15, 116);
+			this.schet_rub_label.Margin = new System.Windows.Forms.Padding(0);
+			this.schet_rub_label.Name = "schet_rub_label";
+			this.schet_rub_label.Size = new System.Drawing.Size(139, 17);
+			this.schet_rub_label.TabIndex = 6;
+			this.schet_rub_label.Text = "счет рублевый №";
+			// 
 			// save
 			// 
 			this.save.BackColor = System.Drawing.Color.DimGray;
 			this.save.FlatAppearance.BorderSize = 2;
 			this.save.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.save.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.save.Location = new System.Drawing.Point(171, 225);
+			this.save.Location = new System.Drawing.Point(244, 226);
 			this.save.Name = "save";
 			this.save.Size = new System.Drawing.Size(174, 39);
 			this.save.TabIndex = 8;
@@ -153,75 +264,35 @@
 			this.save.UseVisualStyleBackColor = false;
 			this.save.Click += new System.EventHandler(this.save_Click);
 			// 
-			// schet
-			// 
-			this.schet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.schet.Location = new System.Drawing.Point(172, 159);
-			this.schet.Name = "schet";
-			this.schet.Size = new System.Drawing.Size(173, 23);
-			this.schet.TabIndex = 7;
-			// 
-			// schet_label
-			// 
-			this.schet_label.AutoSize = true;
-			this.schet_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.schet_label.Location = new System.Drawing.Point(16, 165);
-			this.schet_label.Name = "schet_label";
-			this.schet_label.Size = new System.Drawing.Size(62, 17);
-			this.schet_label.TabIndex = 6;
-			this.schet_label.Text = "счет №";
-			// 
-			// bank_name
-			// 
-			this.bank_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.bank_name.Location = new System.Drawing.Point(172, 114);
-			this.bank_name.Name = "bank_name";
-			this.bank_name.Size = new System.Drawing.Size(174, 23);
-			this.bank_name.TabIndex = 5;
-			// 
 			// bank_label
 			// 
 			this.bank_label.AutoSize = true;
 			this.bank_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.bank_label.Location = new System.Drawing.Point(16, 117);
+			this.bank_label.Location = new System.Drawing.Point(17, 87);
+			this.bank_label.Margin = new System.Windows.Forms.Padding(0);
 			this.bank_label.Name = "bank_label";
 			this.bank_label.Size = new System.Drawing.Size(137, 17);
 			this.bank_label.TabIndex = 4;
 			this.bank_label.Text = "Банк получателя";
 			// 
-			// company
-			// 
-			this.company.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.company.Location = new System.Drawing.Point(172, 66);
-			this.company.Name = "company";
-			this.company.Size = new System.Drawing.Size(174, 23);
-			this.company.TabIndex = 3;
-			// 
 			// company_label
 			// 
 			this.company_label.AutoSize = true;
 			this.company_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.company_label.Location = new System.Drawing.Point(16, 72);
+			this.company_label.Location = new System.Drawing.Point(17, 58);
+			this.company_label.Margin = new System.Windows.Forms.Padding(0);
 			this.company_label.Name = "company_label";
 			this.company_label.Size = new System.Drawing.Size(82, 17);
 			this.company_label.TabIndex = 2;
 			this.company_label.Text = "Компания";
-			// 
-			// azs
-			// 
-			this.azs.BackColor = System.Drawing.Color.White;
-			this.azs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.azs.Location = new System.Drawing.Point(172, 20);
-			this.azs.Name = "azs";
-			this.azs.Size = new System.Drawing.Size(174, 23);
-			this.azs.TabIndex = 1;
 			// 
 			// azs_label
 			// 
 			this.azs_label.AutoSize = true;
 			this.azs_label.BackColor = System.Drawing.Color.DarkGray;
 			this.azs_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.azs_label.Location = new System.Drawing.Point(16, 23);
+			this.azs_label.Location = new System.Drawing.Point(17, 29);
+			this.azs_label.Margin = new System.Windows.Forms.Padding(0);
 			this.azs_label.Name = "azs_label";
 			this.azs_label.Size = new System.Drawing.Size(126, 17);
 			this.azs_label.TabIndex = 0;
@@ -416,6 +487,7 @@
 			this.summa.Name = "summa";
 			this.summa.Size = new System.Drawing.Size(0, 17);
 			this.summa.TabIndex = 32;
+			this.summa.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// total
 			// 
@@ -432,7 +504,7 @@
 			// 
 			this.tableLayoutPanel1.ColumnCount = 2;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
 			this.tableLayoutPanel1.Controls.Add(this.sum500, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.r200, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.rc10, 0, 11);
@@ -476,21 +548,22 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(193, 341);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(194, 341);
 			this.tableLayoutPanel1.TabIndex = 30;
 			// 
 			// sum500
 			// 
-			this.sum500.Location = new System.Drawing.Point(101, 3);
+			this.sum500.Location = new System.Drawing.Point(100, 3);
 			this.sum500.Name = "sum500";
-			this.sum500.Size = new System.Drawing.Size(89, 23);
+			this.sum500.Size = new System.Drawing.Size(90, 23);
 			this.sum500.TabIndex = 46;
+			this.sum500.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// r200
 			// 
 			this.r200.Location = new System.Drawing.Point(3, 29);
 			this.r200.Name = "r200";
-			this.r200.Size = new System.Drawing.Size(89, 23);
+			this.r200.Size = new System.Drawing.Size(90, 23);
 			this.r200.TabIndex = 18;
 			this.r200.Text = "0";
 			this.r200.TextChanged += new System.EventHandler(this.sum200_TextChanged);
@@ -499,7 +572,7 @@
 			// 
 			this.rc10.Location = new System.Drawing.Point(3, 289);
 			this.rc10.Name = "rc10";
-			this.rc10.Size = new System.Drawing.Size(89, 23);
+			this.rc10.Size = new System.Drawing.Size(90, 23);
 			this.rc10.TabIndex = 28;
 			this.rc10.Text = "0";
 			this.rc10.TextChanged += new System.EventHandler(this.sum_rc10_TextChanged);
@@ -508,7 +581,7 @@
 			// 
 			this.rc25.Location = new System.Drawing.Point(3, 263);
 			this.rc25.Name = "rc25";
-			this.rc25.Size = new System.Drawing.Size(89, 23);
+			this.rc25.Size = new System.Drawing.Size(90, 23);
 			this.rc25.TabIndex = 27;
 			this.rc25.Text = "0";
 			this.rc25.TextChanged += new System.EventHandler(this.sum_rc25_TextChanged);
@@ -517,7 +590,7 @@
 			// 
 			this.r50.Location = new System.Drawing.Point(3, 81);
 			this.r50.Name = "r50";
-			this.r50.Size = new System.Drawing.Size(89, 23);
+			this.r50.Size = new System.Drawing.Size(90, 23);
 			this.r50.TabIndex = 20;
 			this.r50.Text = "0";
 			this.r50.TextChanged += new System.EventHandler(this.sum50_TextChanged);
@@ -526,7 +599,7 @@
 			// 
 			this.rc50.Location = new System.Drawing.Point(3, 237);
 			this.rc50.Name = "rc50";
-			this.rc50.Size = new System.Drawing.Size(89, 23);
+			this.rc50.Size = new System.Drawing.Size(90, 23);
 			this.rc50.TabIndex = 26;
 			this.rc50.Text = "0";
 			this.rc50.TextChanged += new System.EventHandler(this.sum_rc50_TextChanged);
@@ -535,7 +608,7 @@
 			// 
 			this.r25.Location = new System.Drawing.Point(3, 107);
 			this.r25.Name = "r25";
-			this.r25.Size = new System.Drawing.Size(89, 23);
+			this.r25.Size = new System.Drawing.Size(90, 23);
 			this.r25.TabIndex = 21;
 			this.r25.Text = "0";
 			this.r25.TextChanged += new System.EventHandler(this.sum25_TextChanged);
@@ -544,7 +617,7 @@
 			// 
 			this.r1.Location = new System.Drawing.Point(3, 211);
 			this.r1.Name = "r1";
-			this.r1.Size = new System.Drawing.Size(89, 23);
+			this.r1.Size = new System.Drawing.Size(90, 23);
 			this.r1.TabIndex = 25;
 			this.r1.Text = "0";
 			this.r1.TextChanged += new System.EventHandler(this.sum1_TextChanged);
@@ -553,7 +626,7 @@
 			// 
 			this.r10.Location = new System.Drawing.Point(3, 133);
 			this.r10.Name = "r10";
-			this.r10.Size = new System.Drawing.Size(89, 23);
+			this.r10.Size = new System.Drawing.Size(90, 23);
 			this.r10.TabIndex = 22;
 			this.r10.Text = "0";
 			this.r10.TextChanged += new System.EventHandler(this.sum10_TextChanged);
@@ -562,7 +635,7 @@
 			// 
 			this.r3.Location = new System.Drawing.Point(3, 185);
 			this.r3.Name = "r3";
-			this.r3.Size = new System.Drawing.Size(89, 23);
+			this.r3.Size = new System.Drawing.Size(90, 23);
 			this.r3.TabIndex = 24;
 			this.r3.Text = "0";
 			this.r3.TextChanged += new System.EventHandler(this.sum3_TextChanged);
@@ -571,7 +644,7 @@
 			// 
 			this.r5.Location = new System.Drawing.Point(3, 159);
 			this.r5.Name = "r5";
-			this.r5.Size = new System.Drawing.Size(89, 23);
+			this.r5.Size = new System.Drawing.Size(90, 23);
 			this.r5.TabIndex = 23;
 			this.r5.Text = "0";
 			this.r5.TextChanged += new System.EventHandler(this.sum5_TextChanged);
@@ -580,7 +653,7 @@
 			// 
 			this.rc5.Location = new System.Drawing.Point(3, 315);
 			this.rc5.Name = "rc5";
-			this.rc5.Size = new System.Drawing.Size(89, 23);
+			this.rc5.Size = new System.Drawing.Size(90, 23);
 			this.rc5.TabIndex = 29;
 			this.rc5.Text = "0";
 			this.rc5.TextChanged += new System.EventHandler(this.sum_rc5_TextChanged);
@@ -589,7 +662,7 @@
 			// 
 			this.r500.Location = new System.Drawing.Point(3, 3);
 			this.r500.Name = "r500";
-			this.r500.Size = new System.Drawing.Size(89, 23);
+			this.r500.Size = new System.Drawing.Size(90, 23);
 			this.r500.TabIndex = 17;
 			this.r500.Text = "0";
 			this.r500.TextChanged += new System.EventHandler(this.sum500_TextChanged);
@@ -598,10 +671,106 @@
 			// 
 			this.r100.Location = new System.Drawing.Point(3, 55);
 			this.r100.Name = "r100";
-			this.r100.Size = new System.Drawing.Size(89, 23);
+			this.r100.Size = new System.Drawing.Size(90, 23);
 			this.r100.TabIndex = 19;
 			this.r100.Text = "0";
 			this.r100.TextChanged += new System.EventHandler(this.sum100_TextChanged);
+			// 
+			// sum200
+			// 
+			this.sum200.Location = new System.Drawing.Point(100, 29);
+			this.sum200.Name = "sum200";
+			this.sum200.Size = new System.Drawing.Size(90, 23);
+			this.sum200.TabIndex = 47;
+			this.sum200.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
+			// 
+			// sum100
+			// 
+			this.sum100.Location = new System.Drawing.Point(100, 55);
+			this.sum100.Name = "sum100";
+			this.sum100.Size = new System.Drawing.Size(90, 23);
+			this.sum100.TabIndex = 48;
+			this.sum100.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
+			// 
+			// sum50
+			// 
+			this.sum50.Location = new System.Drawing.Point(100, 81);
+			this.sum50.Name = "sum50";
+			this.sum50.Size = new System.Drawing.Size(90, 23);
+			this.sum50.TabIndex = 49;
+			this.sum50.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
+			// 
+			// sum25
+			// 
+			this.sum25.Location = new System.Drawing.Point(100, 107);
+			this.sum25.Name = "sum25";
+			this.sum25.Size = new System.Drawing.Size(90, 23);
+			this.sum25.TabIndex = 50;
+			this.sum25.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
+			// 
+			// sum10
+			// 
+			this.sum10.Location = new System.Drawing.Point(100, 133);
+			this.sum10.Name = "sum10";
+			this.sum10.Size = new System.Drawing.Size(90, 23);
+			this.sum10.TabIndex = 51;
+			this.sum10.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
+			// 
+			// sum5
+			// 
+			this.sum5.Location = new System.Drawing.Point(100, 159);
+			this.sum5.Name = "sum5";
+			this.sum5.Size = new System.Drawing.Size(90, 23);
+			this.sum5.TabIndex = 52;
+			this.sum5.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
+			// 
+			// sum3
+			// 
+			this.sum3.Location = new System.Drawing.Point(100, 185);
+			this.sum3.Name = "sum3";
+			this.sum3.Size = new System.Drawing.Size(90, 23);
+			this.sum3.TabIndex = 53;
+			this.sum3.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
+			// 
+			// sum1
+			// 
+			this.sum1.Location = new System.Drawing.Point(100, 211);
+			this.sum1.Name = "sum1";
+			this.sum1.Size = new System.Drawing.Size(90, 23);
+			this.sum1.TabIndex = 54;
+			this.sum1.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
+			// 
+			// sum_rc50
+			// 
+			this.sum_rc50.Location = new System.Drawing.Point(100, 237);
+			this.sum_rc50.Name = "sum_rc50";
+			this.sum_rc50.Size = new System.Drawing.Size(90, 23);
+			this.sum_rc50.TabIndex = 55;
+			this.sum_rc50.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
+			// 
+			// sum_rc25
+			// 
+			this.sum_rc25.Location = new System.Drawing.Point(100, 263);
+			this.sum_rc25.Name = "sum_rc25";
+			this.sum_rc25.Size = new System.Drawing.Size(90, 23);
+			this.sum_rc25.TabIndex = 56;
+			this.sum_rc25.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
+			// 
+			// sum_rc10
+			// 
+			this.sum_rc10.Location = new System.Drawing.Point(100, 289);
+			this.sum_rc10.Name = "sum_rc10";
+			this.sum_rc10.Size = new System.Drawing.Size(90, 23);
+			this.sum_rc10.TabIndex = 57;
+			this.sum_rc10.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
+			// 
+			// sum_rc5
+			// 
+			this.sum_rc5.Location = new System.Drawing.Point(100, 315);
+			this.sum_rc5.Name = "sum_rc5";
+			this.sum_rc5.Size = new System.Drawing.Size(90, 23);
+			this.sum_rc5.TabIndex = 58;
+			this.sum_rc5.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// c5
 			// 
@@ -772,7 +941,7 @@
 			this.date_time.Name = "date_time";
 			this.date_time.Size = new System.Drawing.Size(83, 23);
 			this.date_time.TabIndex = 1;
-			this.date_time.Value = new System.DateTime(2025, 3, 21, 0, 30, 1, 0);
+			this.date_time.Value = new System.DateTime(2025, 3, 13, 0, 0, 0, 0);
 			// 
 			// data_label
 			// 
@@ -784,101 +953,21 @@
 			this.data_label.TabIndex = 0;
 			this.data_label.Text = "Выберите дату";
 			// 
-			// sum200
-			// 
-			this.sum200.Location = new System.Drawing.Point(101, 29);
-			this.sum200.Name = "sum200";
-			this.sum200.Size = new System.Drawing.Size(89, 23);
-			this.sum200.TabIndex = 47;
-			// 
-			// sum100
-			// 
-			this.sum100.Location = new System.Drawing.Point(101, 55);
-			this.sum100.Name = "sum100";
-			this.sum100.Size = new System.Drawing.Size(89, 23);
-			this.sum100.TabIndex = 48;
-			// 
-			// sum50
-			// 
-			this.sum50.Location = new System.Drawing.Point(101, 81);
-			this.sum50.Name = "sum50";
-			this.sum50.Size = new System.Drawing.Size(89, 23);
-			this.sum50.TabIndex = 49;
-			// 
-			// sum25
-			// 
-			this.sum25.Location = new System.Drawing.Point(101, 107);
-			this.sum25.Name = "sum25";
-			this.sum25.Size = new System.Drawing.Size(89, 23);
-			this.sum25.TabIndex = 50;
-			// 
-			// sum10
-			// 
-			this.sum10.Location = new System.Drawing.Point(101, 133);
-			this.sum10.Name = "sum10";
-			this.sum10.Size = new System.Drawing.Size(89, 23);
-			this.sum10.TabIndex = 51;
-			// 
-			// sum5
-			// 
-			this.sum5.Location = new System.Drawing.Point(101, 159);
-			this.sum5.Name = "sum5";
-			this.sum5.Size = new System.Drawing.Size(89, 23);
-			this.sum5.TabIndex = 52;
-			// 
-			// sum3
-			// 
-			this.sum3.Location = new System.Drawing.Point(101, 185);
-			this.sum3.Name = "sum3";
-			this.sum3.Size = new System.Drawing.Size(89, 23);
-			this.sum3.TabIndex = 53;
-			// 
-			// sum1
-			// 
-			this.sum1.Location = new System.Drawing.Point(101, 211);
-			this.sum1.Name = "sum1";
-			this.sum1.Size = new System.Drawing.Size(89, 23);
-			this.sum1.TabIndex = 54;
-			// 
-			// sum_rc50
-			// 
-			this.sum_rc50.Location = new System.Drawing.Point(101, 237);
-			this.sum_rc50.Name = "sum_rc50";
-			this.sum_rc50.Size = new System.Drawing.Size(89, 23);
-			this.sum_rc50.TabIndex = 55;
-			// 
-			// sum_rc25
-			// 
-			this.sum_rc25.Location = new System.Drawing.Point(101, 263);
-			this.sum_rc25.Name = "sum_rc25";
-			this.sum_rc25.Size = new System.Drawing.Size(89, 23);
-			this.sum_rc25.TabIndex = 56;
-			// 
-			// sum_rc10
-			// 
-			this.sum_rc10.Location = new System.Drawing.Point(101, 289);
-			this.sum_rc10.Name = "sum_rc10";
-			this.sum_rc10.Size = new System.Drawing.Size(89, 23);
-			this.sum_rc10.TabIndex = 57;
-			// 
-			// sum_rc5
-			// 
-			this.sum_rc5.Location = new System.Drawing.Point(101, 315);
-			this.sum_rc5.Name = "sum_rc5";
-			this.sum_rc5.Size = new System.Drawing.Size(89, 23);
-			this.sum_rc5.TabIndex = 58;
-			// 
 			// incas
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(811, 539);
+			this.ClientSize = new System.Drawing.Size(809, 536);
 			this.Controls.Add(this.setings);
+			this.MaximumSize = new System.Drawing.Size(825, 575);
+			this.MinimumSize = new System.Drawing.Size(825, 575);
 			this.Name = "incas";
 			this.Text = "Инкассация";
 			this.setings.ResumeLayout(false);
 			this.settings.ResumeLayout(false);
 			this.settings.PerformLayout();
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
 			this.rub.ResumeLayout(false);
 			this.rub.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
@@ -899,8 +988,8 @@
 		private System.Windows.Forms.TextBox company;
 		private System.Windows.Forms.TextBox bank_name;
 		private System.Windows.Forms.Label bank_label;
-		private System.Windows.Forms.TextBox schet;
-		private System.Windows.Forms.Label schet_label;
+		private System.Windows.Forms.TextBox schet_rub;
+		private System.Windows.Forms.Label schet_rub_label;
 		private System.Windows.Forms.Button save;
 		private System.Windows.Forms.Label data_label;
 		private System.Windows.Forms.DateTimePicker date_time;
@@ -961,6 +1050,11 @@
 		private System.Windows.Forms.TextBox sum_rc25;
 		private System.Windows.Forms.TextBox sum_rc10;
 		private System.Windows.Forms.TextBox sum_rc5;
+		private System.Windows.Forms.Label schet_usd_label;
+		private System.Windows.Forms.Label schet_lei_label;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+		private System.Windows.Forms.TextBox schet_usd;
+		private System.Windows.Forms.TextBox schet_lei;
 	}
 }
 
