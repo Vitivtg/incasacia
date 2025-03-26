@@ -16,7 +16,7 @@ namespace incasacia
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new incas());
+			Application.Run(new incas());			
 		}
 	}
 }

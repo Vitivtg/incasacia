@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using incasacia;
 
 namespace incasacia
 {
@@ -17,19 +18,47 @@ namespace incasacia
 			InitializeComponent();			
 		}
 
+		private void Form1_Load(object sender, EventArgs e)
+		{
+			// Устанавливаем текущую дату и время на DateTimePicker
+			date_time.Value = DateTime.Now.Date;  // или DateTime.Now.Date для только даты
+		}
+
 		private void save_Click(object sender, EventArgs e)
 		{
-			bool isLocked = !azs.Enabled; // Если заблокированы, значит true
+			//bool isLocked = !azs.Enabled; // Если заблокированы, значит true
+
+			if (!azs.Enabled)
+			{
+				FormPassword formPassword = new FormPassword();
+
+				if (formPassword.ShowDialog() != DialogResult.OK)
+				{
+					return;
+				}
+
+
+				if (formPassword.EnteredPassword != "9482640")
+				{
+					MessageBox.Show("Неверный пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+			}
 
 			// Изменяем состояние всех текстовых полей
+			bool isLocked = !azs.Enabled; // Если заблокированы, значит true
 			azs.Enabled = isLocked;
 			company.Enabled = isLocked;
 			bank_name.Enabled = isLocked;
-			schet.Enabled = isLocked;
+			schet_rub.Enabled = isLocked;
+			schet_usd.Enabled = isLocked;
+			schet_lei.Enabled = isLocked;
 
 			// Меняем текст кнопки
 			save.Text = isLocked ? "Сохранить" : "Изменить";
 		}
+
+		
 
 		private void sum500_TextChanged(object sender, EventArgs e)
 		{
@@ -56,7 +85,7 @@ namespace incasacia
 			else
 			{
 				sum200.Text = "Ошибка";
-			}
+			}			
 		}
 
 		private void sum100_TextChanged(object sender, EventArgs e)
@@ -211,6 +240,22 @@ namespace incasacia
 			{
 				sum_rc5.Text = "Ошибка";
 			}
+		}
+
+		private void total_sum_LabelChanged(object sender, EventArgs e)
+		{
+			double sum = 0;
+
+			TextBox[] textBoxes = { sum500, sum200, sum100, sum50, sum25, sum10, sum5, sum3, sum1, sum_rc50, sum_rc25, sum_rc10, sum_rc5 };
+
+			foreach (TextBox tb in textBoxes)
+			{
+				if (double.TryParse(tb.Text, out double value))
+				{
+					sum += value;
+				}
+			}
+			summa.Text = sum.ToString();
 		}
 	}
 }
