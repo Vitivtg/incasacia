@@ -47,6 +47,8 @@
 			this.dol = new System.Windows.Forms.TabPage();
 			this.lei = new System.Windows.Forms.TabPage();
 			this.rub = new System.Windows.Forms.TabPage();
+			this.save_inc = new System.Windows.Forms.Button();
+			this.list_inc = new System.Windows.Forms.ListBox();
 			this.label13 = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
@@ -67,9 +69,7 @@
 			this.r200 = new System.Windows.Forms.TextBox();
 			this.rc10 = new System.Windows.Forms.TextBox();
 			this.rc25 = new System.Windows.Forms.TextBox();
-			this.r50 = new System.Windows.Forms.TextBox();
 			this.rc50 = new System.Windows.Forms.TextBox();
-			this.r25 = new System.Windows.Forms.TextBox();
 			this.r1 = new System.Windows.Forms.TextBox();
 			this.r10 = new System.Windows.Forms.TextBox();
 			this.r3 = new System.Windows.Forms.TextBox();
@@ -89,6 +89,8 @@
 			this.sum_rc25 = new System.Windows.Forms.TextBox();
 			this.sum_rc10 = new System.Windows.Forms.TextBox();
 			this.sum_rc5 = new System.Windows.Forms.TextBox();
+			this.r25 = new System.Windows.Forms.TextBox();
+			this.r50 = new System.Windows.Forms.TextBox();
 			this.c5 = new System.Windows.Forms.Label();
 			this.c10 = new System.Windows.Forms.Label();
 			this.c25 = new System.Windows.Forms.Label();
@@ -321,6 +323,8 @@
 			// rub
 			// 
 			this.rub.BackColor = System.Drawing.Color.DarkGray;
+			this.rub.Controls.Add(this.save_inc);
+			this.rub.Controls.Add(this.list_inc);
 			this.rub.Controls.Add(this.label13);
 			this.rub.Controls.Add(this.label12);
 			this.rub.Controls.Add(this.label11);
@@ -362,10 +366,28 @@
 			this.rub.TabIndex = 3;
 			this.rub.Text = "Рубли";
 			// 
+			// save_inc
+			// 
+			this.save_inc.Location = new System.Drawing.Point(458, 458);
+			this.save_inc.Name = "save_inc";
+			this.save_inc.Size = new System.Drawing.Size(268, 38);
+			this.save_inc.TabIndex = 47;
+			this.save_inc.Text = "Сохранить";
+			this.save_inc.UseVisualStyleBackColor = true;
+			// 
+			// list_inc
+			// 
+			this.list_inc.FormattingEnabled = true;
+			this.list_inc.ItemHeight = 16;
+			this.list_inc.Location = new System.Drawing.Point(436, 32);
+			this.list_inc.Name = "list_inc";
+			this.list_inc.Size = new System.Drawing.Size(325, 420);
+			this.list_inc.TabIndex = 46;
+			// 
 			// label13
 			// 
 			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(491, 347);
+			this.label13.Location = new System.Drawing.Point(80, 429);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(18, 17);
 			this.label13.TabIndex = 45;
@@ -374,7 +396,7 @@
 			// label12
 			// 
 			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(491, 321);
+			this.label12.Location = new System.Drawing.Point(80, 403);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(18, 17);
 			this.label12.TabIndex = 44;
@@ -383,7 +405,7 @@
 			// label11
 			// 
 			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(491, 295);
+			this.label11.Location = new System.Drawing.Point(80, 377);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(18, 17);
 			this.label11.TabIndex = 43;
@@ -392,7 +414,7 @@
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(491, 269);
+			this.label10.Location = new System.Drawing.Point(80, 351);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(18, 17);
 			this.label10.TabIndex = 42;
@@ -401,7 +423,7 @@
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(491, 243);
+			this.label9.Location = new System.Drawing.Point(80, 325);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(18, 17);
 			this.label9.TabIndex = 41;
@@ -410,7 +432,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(491, 217);
+			this.label8.Location = new System.Drawing.Point(80, 299);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(18, 17);
 			this.label8.TabIndex = 40;
@@ -419,7 +441,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(491, 191);
+			this.label7.Location = new System.Drawing.Point(80, 273);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(18, 17);
 			this.label7.TabIndex = 39;
@@ -428,7 +450,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(491, 165);
+			this.label6.Location = new System.Drawing.Point(80, 247);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(18, 17);
 			this.label6.TabIndex = 38;
@@ -437,7 +459,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(491, 139);
+			this.label5.Location = new System.Drawing.Point(80, 221);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(18, 17);
 			this.label5.TabIndex = 37;
@@ -446,7 +468,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(491, 113);
+			this.label4.Location = new System.Drawing.Point(80, 195);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(18, 17);
 			this.label4.TabIndex = 36;
@@ -455,7 +477,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(491, 87);
+			this.label3.Location = new System.Drawing.Point(80, 169);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(18, 17);
 			this.label3.TabIndex = 35;
@@ -464,7 +486,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(491, 61);
+			this.label2.Location = new System.Drawing.Point(80, 143);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(18, 17);
 			this.label2.TabIndex = 34;
@@ -473,7 +495,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(491, 35);
+			this.label1.Location = new System.Drawing.Point(80, 117);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(18, 17);
 			this.label1.TabIndex = 33;
@@ -482,18 +504,20 @@
 			// summa
 			// 
 			this.summa.AutoSize = true;
-			this.summa.Location = new System.Drawing.Point(540, 391);
-			this.summa.MaximumSize = new System.Drawing.Size(100, 0);
+			this.summa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.summa.Location = new System.Drawing.Point(201, 474);
+			this.summa.MaximumSize = new System.Drawing.Size(200, 0);
 			this.summa.Name = "summa";
-			this.summa.Size = new System.Drawing.Size(0, 17);
+			this.summa.Size = new System.Drawing.Size(19, 20);
 			this.summa.TabIndex = 32;
+			this.summa.Text = "0";
 			this.summa.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// total
 			// 
 			this.total.AutoSize = true;
 			this.total.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.total.Location = new System.Drawing.Point(433, 389);
+			this.total.Location = new System.Drawing.Point(124, 474);
 			this.total.Name = "total";
 			this.total.Size = new System.Drawing.Size(64, 20);
 			this.total.TabIndex = 31;
@@ -509,9 +533,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.r200, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.rc10, 0, 11);
 			this.tableLayoutPanel1.Controls.Add(this.rc25, 0, 10);
-			this.tableLayoutPanel1.Controls.Add(this.r50, 0, 3);
 			this.tableLayoutPanel1.Controls.Add(this.rc50, 0, 9);
-			this.tableLayoutPanel1.Controls.Add(this.r25, 0, 4);
 			this.tableLayoutPanel1.Controls.Add(this.r1, 0, 8);
 			this.tableLayoutPanel1.Controls.Add(this.r10, 0, 5);
 			this.tableLayoutPanel1.Controls.Add(this.r3, 0, 7);
@@ -531,7 +553,9 @@
 			this.tableLayoutPanel1.Controls.Add(this.sum_rc25, 1, 10);
 			this.tableLayoutPanel1.Controls.Add(this.sum_rc10, 1, 11);
 			this.tableLayoutPanel1.Controls.Add(this.sum_rc5, 1, 13);
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(536, 29);
+			this.tableLayoutPanel1.Controls.Add(this.r25, 0, 4);
+			this.tableLayoutPanel1.Controls.Add(this.r50, 0, 3);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(125, 111);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 14;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -553,10 +577,12 @@
 			// 
 			// sum500
 			// 
+			this.sum500.Enabled = false;
 			this.sum500.Location = new System.Drawing.Point(100, 3);
 			this.sum500.Name = "sum500";
 			this.sum500.Size = new System.Drawing.Size(90, 23);
 			this.sum500.TabIndex = 46;
+			this.sum500.Text = "0";
 			this.sum500.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// r200
@@ -586,15 +612,6 @@
 			this.rc25.Text = "0";
 			this.rc25.TextChanged += new System.EventHandler(this.sum_rc25_TextChanged);
 			// 
-			// r50
-			// 
-			this.r50.Location = new System.Drawing.Point(3, 81);
-			this.r50.Name = "r50";
-			this.r50.Size = new System.Drawing.Size(90, 23);
-			this.r50.TabIndex = 20;
-			this.r50.Text = "0";
-			this.r50.TextChanged += new System.EventHandler(this.sum50_TextChanged);
-			// 
 			// rc50
 			// 
 			this.rc50.Location = new System.Drawing.Point(3, 237);
@@ -603,15 +620,6 @@
 			this.rc50.TabIndex = 26;
 			this.rc50.Text = "0";
 			this.rc50.TextChanged += new System.EventHandler(this.sum_rc50_TextChanged);
-			// 
-			// r25
-			// 
-			this.r25.Location = new System.Drawing.Point(3, 107);
-			this.r25.Name = "r25";
-			this.r25.Size = new System.Drawing.Size(90, 23);
-			this.r25.TabIndex = 21;
-			this.r25.Text = "0";
-			this.r25.TextChanged += new System.EventHandler(this.sum25_TextChanged);
 			// 
 			// r1
 			// 
@@ -678,105 +686,147 @@
 			// 
 			// sum200
 			// 
+			this.sum200.Enabled = false;
 			this.sum200.Location = new System.Drawing.Point(100, 29);
 			this.sum200.Name = "sum200";
 			this.sum200.Size = new System.Drawing.Size(90, 23);
 			this.sum200.TabIndex = 47;
+			this.sum200.Text = "0";
 			this.sum200.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum100
 			// 
+			this.sum100.Enabled = false;
 			this.sum100.Location = new System.Drawing.Point(100, 55);
 			this.sum100.Name = "sum100";
 			this.sum100.Size = new System.Drawing.Size(90, 23);
 			this.sum100.TabIndex = 48;
+			this.sum100.Text = "0";
 			this.sum100.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum50
 			// 
+			this.sum50.Enabled = false;
 			this.sum50.Location = new System.Drawing.Point(100, 81);
 			this.sum50.Name = "sum50";
 			this.sum50.Size = new System.Drawing.Size(90, 23);
 			this.sum50.TabIndex = 49;
+			this.sum50.Text = "0";
 			this.sum50.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum25
 			// 
+			this.sum25.Enabled = false;
 			this.sum25.Location = new System.Drawing.Point(100, 107);
 			this.sum25.Name = "sum25";
 			this.sum25.Size = new System.Drawing.Size(90, 23);
 			this.sum25.TabIndex = 50;
+			this.sum25.Text = "0";
 			this.sum25.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum10
 			// 
+			this.sum10.Enabled = false;
 			this.sum10.Location = new System.Drawing.Point(100, 133);
 			this.sum10.Name = "sum10";
 			this.sum10.Size = new System.Drawing.Size(90, 23);
 			this.sum10.TabIndex = 51;
+			this.sum10.Text = "0";
 			this.sum10.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum5
 			// 
+			this.sum5.Enabled = false;
 			this.sum5.Location = new System.Drawing.Point(100, 159);
 			this.sum5.Name = "sum5";
 			this.sum5.Size = new System.Drawing.Size(90, 23);
 			this.sum5.TabIndex = 52;
+			this.sum5.Text = "0";
 			this.sum5.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum3
 			// 
+			this.sum3.Enabled = false;
 			this.sum3.Location = new System.Drawing.Point(100, 185);
 			this.sum3.Name = "sum3";
 			this.sum3.Size = new System.Drawing.Size(90, 23);
 			this.sum3.TabIndex = 53;
+			this.sum3.Text = "0";
 			this.sum3.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum1
 			// 
+			this.sum1.Enabled = false;
 			this.sum1.Location = new System.Drawing.Point(100, 211);
 			this.sum1.Name = "sum1";
 			this.sum1.Size = new System.Drawing.Size(90, 23);
 			this.sum1.TabIndex = 54;
+			this.sum1.Text = "0";
 			this.sum1.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum_rc50
 			// 
+			this.sum_rc50.Enabled = false;
 			this.sum_rc50.Location = new System.Drawing.Point(100, 237);
 			this.sum_rc50.Name = "sum_rc50";
 			this.sum_rc50.Size = new System.Drawing.Size(90, 23);
 			this.sum_rc50.TabIndex = 55;
+			this.sum_rc50.Text = "0";
 			this.sum_rc50.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum_rc25
 			// 
+			this.sum_rc25.Enabled = false;
 			this.sum_rc25.Location = new System.Drawing.Point(100, 263);
 			this.sum_rc25.Name = "sum_rc25";
 			this.sum_rc25.Size = new System.Drawing.Size(90, 23);
 			this.sum_rc25.TabIndex = 56;
+			this.sum_rc25.Text = "0";
 			this.sum_rc25.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum_rc10
 			// 
+			this.sum_rc10.Enabled = false;
 			this.sum_rc10.Location = new System.Drawing.Point(100, 289);
 			this.sum_rc10.Name = "sum_rc10";
 			this.sum_rc10.Size = new System.Drawing.Size(90, 23);
 			this.sum_rc10.TabIndex = 57;
+			this.sum_rc10.Text = "0";
 			this.sum_rc10.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum_rc5
 			// 
+			this.sum_rc5.Enabled = false;
 			this.sum_rc5.Location = new System.Drawing.Point(100, 315);
 			this.sum_rc5.Name = "sum_rc5";
 			this.sum_rc5.Size = new System.Drawing.Size(90, 23);
 			this.sum_rc5.TabIndex = 58;
+			this.sum_rc5.Text = "0";
 			this.sum_rc5.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
+			// 
+			// r25
+			// 
+			this.r25.Location = new System.Drawing.Point(3, 107);
+			this.r25.Name = "r25";
+			this.r25.Size = new System.Drawing.Size(90, 23);
+			this.r25.TabIndex = 21;
+			this.r25.Text = "0";
+			this.r25.TextChanged += new System.EventHandler(this.sum25_TextChanged);
+			// 
+			// r50
+			// 
+			this.r50.Location = new System.Drawing.Point(3, 81);
+			this.r50.Name = "r50";
+			this.r50.Size = new System.Drawing.Size(90, 23);
+			this.r50.TabIndex = 20;
+			this.r50.Text = "0";
+			this.r50.TextChanged += new System.EventHandler(this.sum50_TextChanged);
 			// 
 			// c5
 			// 
 			this.c5.AutoSize = true;
 			this.c5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.c5.Location = new System.Drawing.Point(434, 347);
+			this.c5.Location = new System.Drawing.Point(23, 429);
 			this.c5.Margin = new System.Windows.Forms.Padding(0);
 			this.c5.Name = "c5";
 			this.c5.Size = new System.Drawing.Size(40, 17);
@@ -787,7 +837,7 @@
 			// 
 			this.c10.AutoSize = true;
 			this.c10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.c10.Location = new System.Drawing.Point(434, 321);
+			this.c10.Location = new System.Drawing.Point(23, 403);
 			this.c10.Margin = new System.Windows.Forms.Padding(0);
 			this.c10.Name = "c10";
 			this.c10.Size = new System.Drawing.Size(40, 17);
@@ -798,7 +848,7 @@
 			// 
 			this.c25.AutoSize = true;
 			this.c25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.c25.Location = new System.Drawing.Point(434, 295);
+			this.c25.Location = new System.Drawing.Point(23, 377);
 			this.c25.Margin = new System.Windows.Forms.Padding(0);
 			this.c25.Name = "c25";
 			this.c25.Size = new System.Drawing.Size(40, 17);
@@ -809,7 +859,7 @@
 			// 
 			this.c50.AutoSize = true;
 			this.c50.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.c50.Location = new System.Drawing.Point(434, 269);
+			this.c50.Location = new System.Drawing.Point(23, 351);
 			this.c50.Margin = new System.Windows.Forms.Padding(0);
 			this.c50.Name = "c50";
 			this.c50.Size = new System.Drawing.Size(40, 17);
@@ -820,7 +870,7 @@
 			// 
 			this.m1.AutoSize = true;
 			this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m1.Location = new System.Drawing.Point(434, 243);
+			this.m1.Location = new System.Drawing.Point(23, 325);
 			this.m1.Margin = new System.Windows.Forms.Padding(0);
 			this.m1.Name = "m1";
 			this.m1.Size = new System.Drawing.Size(17, 17);
@@ -831,7 +881,7 @@
 			// 
 			this.m3.AutoSize = true;
 			this.m3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m3.Location = new System.Drawing.Point(434, 217);
+			this.m3.Location = new System.Drawing.Point(23, 299);
 			this.m3.Margin = new System.Windows.Forms.Padding(0);
 			this.m3.Name = "m3";
 			this.m3.Size = new System.Drawing.Size(17, 17);
@@ -842,7 +892,7 @@
 			// 
 			this.m5.AutoSize = true;
 			this.m5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m5.Location = new System.Drawing.Point(434, 191);
+			this.m5.Location = new System.Drawing.Point(23, 273);
 			this.m5.Margin = new System.Windows.Forms.Padding(0);
 			this.m5.Name = "m5";
 			this.m5.Size = new System.Drawing.Size(17, 17);
@@ -853,7 +903,7 @@
 			// 
 			this.m10.AutoSize = true;
 			this.m10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m10.Location = new System.Drawing.Point(434, 165);
+			this.m10.Location = new System.Drawing.Point(23, 247);
 			this.m10.Margin = new System.Windows.Forms.Padding(0);
 			this.m10.Name = "m10";
 			this.m10.Size = new System.Drawing.Size(26, 17);
@@ -864,7 +914,7 @@
 			// 
 			this.m25.AutoSize = true;
 			this.m25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m25.Location = new System.Drawing.Point(434, 139);
+			this.m25.Location = new System.Drawing.Point(23, 221);
 			this.m25.Margin = new System.Windows.Forms.Padding(0);
 			this.m25.Name = "m25";
 			this.m25.Size = new System.Drawing.Size(26, 17);
@@ -875,7 +925,7 @@
 			// 
 			this.m50.AutoSize = true;
 			this.m50.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m50.Location = new System.Drawing.Point(434, 113);
+			this.m50.Location = new System.Drawing.Point(23, 195);
 			this.m50.Margin = new System.Windows.Forms.Padding(0);
 			this.m50.Name = "m50";
 			this.m50.Size = new System.Drawing.Size(26, 17);
@@ -886,7 +936,7 @@
 			// 
 			this.m500.AutoSize = true;
 			this.m500.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m500.Location = new System.Drawing.Point(434, 35);
+			this.m500.Location = new System.Drawing.Point(23, 117);
 			this.m500.Margin = new System.Windows.Forms.Padding(0);
 			this.m500.Name = "m500";
 			this.m500.Size = new System.Drawing.Size(35, 17);
@@ -897,7 +947,7 @@
 			// 
 			this.m100.AutoSize = true;
 			this.m100.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m100.Location = new System.Drawing.Point(434, 87);
+			this.m100.Location = new System.Drawing.Point(23, 169);
 			this.m100.Margin = new System.Windows.Forms.Padding(0);
 			this.m100.Name = "m100";
 			this.m100.Size = new System.Drawing.Size(35, 17);
@@ -908,7 +958,7 @@
 			// 
 			this.m200.AutoSize = true;
 			this.m200.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m200.Location = new System.Drawing.Point(434, 61);
+			this.m200.Location = new System.Drawing.Point(23, 143);
 			this.m200.Margin = new System.Windows.Forms.Padding(0);
 			this.m200.Name = "m200";
 			this.m200.Size = new System.Drawing.Size(35, 17);
@@ -918,7 +968,7 @@
 			// bags_number
 			// 
 			this.bags_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.bags_number.Location = new System.Drawing.Point(160, 66);
+			this.bags_number.Location = new System.Drawing.Point(161, 65);
 			this.bags_number.Name = "bags_number";
 			this.bags_number.Size = new System.Drawing.Size(82, 23);
 			this.bags_number.TabIndex = 3;
@@ -927,7 +977,7 @@
 			// 
 			this.bag_label.AutoSize = true;
 			this.bag_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.bag_label.Location = new System.Drawing.Point(21, 67);
+			this.bag_label.Location = new System.Drawing.Point(17, 68);
 			this.bag_label.Name = "bag_label";
 			this.bag_label.Size = new System.Drawing.Size(73, 17);
 			this.bag_label.TabIndex = 2;
@@ -1055,6 +1105,8 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.TextBox schet_usd;
 		private System.Windows.Forms.TextBox schet_lei;
+		private System.Windows.Forms.ListBox list_inc;
+		private System.Windows.Forms.Button save_inc;
 	}
 }
 
