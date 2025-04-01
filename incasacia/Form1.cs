@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
+using ClosedXML.Excel;
+using System.Reflection;
+using DocumentFormat.OpenXml.Drawing.Diagrams;
 
 namespace incasacia
 {
@@ -20,6 +23,81 @@ namespace incasacia
 		{
 			InitializeComponent();
 			LoadData();
+		}		
+
+		private string ExtractExcelTemplate()
+		{
+			string folderPath = @"D:\incasation\rub\";
+			string templatePath = Path.Combine(folderPath, "sample.xlsx");
+			
+			if (!File.Exists(templatePath))
+			{
+				
+				using (Stream resourcesStream= Assembly.GetExecutingAssembly().GetManifestResourceStream("incasacia.incasacia.Resources.sample.xlsx"))
+				{
+					if(resourcesStream != null)
+					{
+						using (FileStream fileStream = new FileStream(templatePath, FileMode.Create, FileAccess.Write))
+						{
+							resourcesStream.CopyTo(fileStream);
+						}
+					}
+					else
+					{
+						MessageBox.Show("Не найден шаблон Excel!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						return null;
+					}
+				}					
+			}
+			return templatePath;
+		}
+
+		private void save_rub_click(object sender, EventArgs e)
+		{
+			string folderPath = @"D:\incasation\rub\";
+			string excelFilePath = Path.Combine(folderPath, $"{DateTime.Now:dd-MM-yyyy}.xlsx");
+			string templatePath = ExtractExcelTemplate();
+
+			if (templatePath == null)
+			{
+				return;
+			}
+			else
+			{
+				File.Copy(templatePath, excelFilePath, true);
+
+				using (var workbook = new XLWorkbook(templatePath))
+				{
+					var ws = workbook.Worksheet(1);
+
+					ws.Cell("M1").Value = bags_number.Text;
+					ws.Cell("AH1").Value = bags_number.Text;
+					ws.Cell("M45").Value = bags_number.Text;
+					ws.Cell("AH45").Value = bags_number.Text;
+					ws.Cell("M88").Value = bags_number.Text;
+					ws.Cell("AH88").Value = bags_number.Text;
+					ws.Cell("D7").Value = azs.Text + "  " + company.Text;
+					ws.Cell("D51").Value = azs.Text + "  " + company.Text;
+					ws.Cell("D94").Value = azs.Text + "  " + company.Text;
+					if (DateTime.TryParse(date_time.Text, out DateTime date))
+					{
+						ws.Cell("B4").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
+						ws.Cell("B48").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
+						ws.Cell("B91").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
+					}
+					else
+					{
+						ws.Cell("B4").Value = "Ошибка";
+						ws.Cell("B48").Value = "Ошибка";
+						ws.Cell("B91").Value = "Ошибка";
+					}
+					ws.Cell("R9").Value = schet_rub.Text;	
+					ws.Cell("R53").Value = schet_rub.Text;
+					ws.Cell("R96").Value = schet_rub.Text;
+
+					workbook.SaveAs(excelFilePath);					
+				}
+			}
 		}
 
 		private void LoadData()
