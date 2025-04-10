@@ -982,7 +982,7 @@
 			this.date_time.Name = "date_time";
 			this.date_time.Size = new System.Drawing.Size(83, 23);
 			this.date_time.TabIndex = 1;
-			this.date_time.Value = new System.DateTime(2025, 3, 13, 0, 0, 0, 0);
+			this.date_time.Value = new System.DateTime(2025, 3, 12, 0, 0, 0, 0);
 			// 
 			// data_label
 			// 
