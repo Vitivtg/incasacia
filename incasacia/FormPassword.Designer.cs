@@ -77,6 +77,7 @@
 			this.MaximumSize = new System.Drawing.Size(370, 400);
 			this.MinimumSize = new System.Drawing.Size(370, 400);
 			this.Name = "FormPassword";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FormPassword";
 			this.ResumeLayout(false);
 			this.PerformLayout();

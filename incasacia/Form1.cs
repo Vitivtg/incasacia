@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using ClosedXML.Excel;
 using System.Reflection;
 using DocumentFormat.OpenXml.Drawing.Diagrams;
+using System.Text.RegularExpressions;
 
 namespace incasacia
 {
@@ -23,19 +24,22 @@ namespace incasacia
 		{
 			InitializeComponent();
 			LoadData();
-		}		
+		}
 
 		private string ExtractExcelTemplate()
 		{
-			string folderPath = @"D:\incasation\rub\";
+
+			//string[] resources = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+			//MessageBox.Show(string.Join("\n", resources), "Доступные ресурсы");
+			string folderPath = @"D:\incasation\";
 			string templatePath = Path.Combine(folderPath, "sample.xlsx");
-			
+
 			if (!File.Exists(templatePath))
 			{
-				
-				using (Stream resourcesStream= Assembly.GetExecutingAssembly().GetManifestResourceStream("incasacia.incasacia.Resources.sample.xlsx"))
+
+				using (Stream resourcesStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("incasacia.Resources.sample.xlsx"))
 				{
-					if(resourcesStream != null)
+					if (resourcesStream != null)
 					{
 						using (FileStream fileStream = new FileStream(templatePath, FileMode.Create, FileAccess.Write))
 						{
@@ -47,7 +51,7 @@ namespace incasacia
 						MessageBox.Show("Не найден шаблон Excel!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 						return null;
 					}
-				}					
+				}
 			}
 			return templatePath;
 		}
@@ -55,7 +59,25 @@ namespace incasacia
 		private void save_rub_click(object sender, EventArgs e)
 		{
 			string folderPath = @"D:\incasation\rub\";
-			string excelFilePath = Path.Combine(folderPath, $"{DateTime.Now:dd-MM-yyyy}.xlsx");
+
+			if (!Directory.Exists(folderPath))
+			{
+				Directory.CreateDirectory(folderPath);
+			}
+
+			string baseFileName = date_time.Text;
+			string extension = ".xlsx";
+			string excelFilePath = Path.Combine(folderPath, baseFileName + extension);
+
+
+			int suffix = 1;
+			while (File.Exists(excelFilePath))
+			{
+				string newFileName = $"{baseFileName} ({suffix}){extension}";
+				excelFilePath = Path.Combine(folderPath, newFileName);
+				suffix++;
+			}
+
 			string templatePath = ExtractExcelTemplate();
 
 			if (templatePath == null)
@@ -69,39 +91,62 @@ namespace incasacia
 				using (var workbook = new XLWorkbook(templatePath))
 				{
 					var ws = workbook.Worksheet(1);
+					string input = bags_number.Text;
 
-					ws.Cell("M1").Value = bags_number.Text;
-					ws.Cell("AH1").Value = bags_number.Text;
-					ws.Cell("M45").Value = bags_number.Text;
-					ws.Cell("AH45").Value = bags_number.Text;
-					ws.Cell("M88").Value = bags_number.Text;
-					ws.Cell("AH88").Value = bags_number.Text;
-					ws.Cell("D7").Value = azs.Text + "  " + company.Text;
-					ws.Cell("D51").Value = azs.Text + "  " + company.Text;
-					ws.Cell("D94").Value = azs.Text + "  " + company.Text;
-					if (DateTime.TryParse(date_time.Text, out DateTime date))
+					if (!Regex.IsMatch(input, @"^\d{3}\/\d$") || !DateTime.TryParse(date_time.Text, out DateTime date))
 					{
-						ws.Cell("B4").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
-						ws.Cell("B48").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
-						ws.Cell("B91").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
+						MessageBox.Show("Неверный формат номера мешка или даты!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						return;
 					}
 					else
 					{
-						ws.Cell("B4").Value = "Ошибка";
-						ws.Cell("B48").Value = "Ошибка";
-						ws.Cell("B91").Value = "Ошибка";
-					}
-					ws.Cell("R9").Value = schet_rub.Text;	
-					ws.Cell("R53").Value = schet_rub.Text;
-					ws.Cell("R96").Value = schet_rub.Text;
+						ws.Cell("D7").Value = azs.Text + "  " + company.Text; //от кого
+						ws.Cell("D51").Value = azs.Text + "  " + company.Text;//от кого
+						ws.Cell("D94").Value = azs.Text + "  " + company.Text;//от кого					
 
-					workbook.SaveAs(excelFilePath);					
+						ws.Cell("B4").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
+						ws.Cell("B48").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
+						ws.Cell("B91").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
+
+
+						ws.Cell("R9").Value = schet_rub.Text;//счет №	
+						ws.Cell("R53").Value = schet_rub.Text;//счет №
+						ws.Cell("R96").Value = schet_rub.Text;//счет №
+
+						ws.Cell("E9").Value = company.Text;//наименование банка
+						ws.Cell("E53").Value = company.Text;//наименование банка
+						ws.Cell("E96").Value = company.Text;//наименование банка
+
+						ws.Cell("N10").Value = summa.Text;//сумма
+						ws.Cell("AD8").Value = summa.Text;//сумма
+						ws.Cell("AH13").Value = summa.Text;//сумма
+						ws.Cell("N54").Value = summa.Text;//сумма
+						ws.Cell("AD52").Value = summa.Text;//сумма
+						ws.Cell("AH57").Value = summa.Text;//сумма
+						ws.Cell("N97").Value = summa.Text;//сумма
+						ws.Cell("AD95").Value = summa.Text;//сумма
+						ws.Cell("AH100").Value = summa.Text;//сумма
+
+						ws.Cell("M12").Value = bank_name.Text;//наименование банка
+						ws.Cell("M56").Value = bank_name.Text;//наименование банка
+						ws.Cell("M99").Value = bank_name.Text;//наименование банка
+
+						ws.Cell("M1").Value = bags_number.Text;//номер мешка
+						ws.Cell("AH1").Value = bags_number.Text;//номер мешка
+						ws.Cell("M45").Value = bags_number.Text;//номер мешка
+						ws.Cell("AH45").Value = bags_number.Text;//номер мешка
+						ws.Cell("M88").Value = bags_number.Text;//номер мешка
+						ws.Cell("AH88").Value = bags_number.Text;//номер мешка
+						workbook.SaveAs(excelFilePath);
+					}
+
 				}
 			}
 		}
 
 		private void LoadData()
 		{
+			date_time.Value = DateTime.Now;
 			if (File.Exists(filePath))
 			{
 				string json = File.ReadAllText(filePath);
@@ -193,7 +238,7 @@ namespace incasacia
 		}
 
 		private void sum500_TextChanged(object sender, EventArgs e)
-		{						
+		{
 			if (int.TryParse(r500.Text, out int num500))
 			{
 				int sum = num500 * 500;
@@ -206,7 +251,7 @@ namespace incasacia
 		}
 
 		private void sum200_TextChanged(object sender, EventArgs e)
-		{			
+		{
 			if (int.TryParse(r200.Text, out int num200))
 			{
 				int sum = num200 * 200;
@@ -219,7 +264,7 @@ namespace incasacia
 		}
 
 		private void sum100_TextChanged(object sender, EventArgs e)
-		{			
+		{
 			if (int.TryParse(r100.Text, out int num100))
 			{
 				int sum = num100 * 100;
@@ -232,7 +277,7 @@ namespace incasacia
 		}
 
 		private void sum50_TextChanged(object sender, EventArgs e)
-		{			
+		{
 			if (int.TryParse(r50.Text, out int num50))
 			{
 				int sum = num50 * 50;
@@ -245,7 +290,7 @@ namespace incasacia
 		}
 
 		private void sum25_TextChanged(object sender, EventArgs e)
-		{			
+		{
 			if (int.TryParse(r25.Text, out int num25))
 			{
 				int sum = num25 * 25;
@@ -258,7 +303,7 @@ namespace incasacia
 		}
 
 		private void sum10_TextChanged(object sender, EventArgs e)
-		{			
+		{
 			if (int.TryParse(r10.Text, out int num10))
 			{
 				int sum = num10 * 10;
@@ -271,7 +316,7 @@ namespace incasacia
 		}
 
 		private void sum5_TextChanged(object sender, EventArgs e)
-		{			
+		{
 			if (int.TryParse(r5.Text, out int num5))
 			{
 				int sum = num5 * 5;
@@ -284,7 +329,7 @@ namespace incasacia
 		}
 
 		private void sum3_TextChanged(object sender, EventArgs e)
-		{			
+		{
 			if (int.TryParse(r3.Text, out int num3))
 			{
 				int sum = num3 * 3;
@@ -297,7 +342,7 @@ namespace incasacia
 		}
 
 		private void sum1_TextChanged(object sender, EventArgs e)
-		{			
+		{
 			if (int.TryParse(r1.Text, out int num1))
 			{
 				int sum = num1 * 1;
@@ -310,7 +355,7 @@ namespace incasacia
 		}
 
 		private void sum_rc50_TextChanged(object sender, EventArgs e)
-		{			
+		{
 			if (double.TryParse(rc50.Text, out double num05))
 			{
 				double sum = num05 * 0.5;
@@ -323,7 +368,7 @@ namespace incasacia
 		}
 
 		private void sum_rc25_TextChanged(object sender, EventArgs e)
-		{			
+		{
 			if (double.TryParse(rc25.Text, out double num025))
 			{
 				double sum = num025 * 0.25;
@@ -336,7 +381,7 @@ namespace incasacia
 		}
 
 		private void sum_rc10_TextChanged(object sender, EventArgs e)
-		{			
+		{
 			if (double.TryParse(rc10.Text, out double num01))
 			{
 				double sum = num01 * 0.1;
@@ -349,7 +394,7 @@ namespace incasacia
 		}
 
 		private void sum_rc5_TextChanged(object sender, EventArgs e)
-		{			
+		{
 			if (double.TryParse(rc5.Text, out double num005))
 			{
 				double sum = num005 * 0.05;
@@ -363,7 +408,7 @@ namespace incasacia
 
 		private void total_sum_LabelChanged(object sender, EventArgs e)
 		{
-			double sum = 0;			
+			double sum = 0;
 			TextBox[] textBoxes = { sum500, sum200, sum100, sum50, sum25, sum10, sum5, sum3, sum1, sum_rc50, sum_rc25, sum_rc10, sum_rc5 };
 
 			foreach (TextBox tb in textBoxes)
@@ -373,7 +418,24 @@ namespace incasacia
 					sum += value;
 				}
 			}
-			summa.Text = sum.ToString()+" руб.";
+			summa.Text = sum.ToString("F2");
+		}
+
+		public static string NumberToWordsRub(long number)
+		{
+			if (number == 0)
+				return "ноль рублей";
+
+			string[] units = { "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять" };
+			string[] unitsFemale = { "одна", "две", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять" };
+			string[] teens = { "одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать" };
+			string[] tens = { "десять", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто" };
+			string[] hundreds = { "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот" };
+			string[] thousandsForms = { "тысяча", "тысячи", "тысяч" };
+			string[] millionsForms = { "миллион", "миллиона", "миллионов" };
+			string[] rubForms = { "рубль", "рубля", "рублей" };
+
+			StringBuilder result = new StringBuilder();
 		}
 	}
 }
