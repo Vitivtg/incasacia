@@ -499,9 +499,9 @@
 			this.summa.Location = new System.Drawing.Point(593, 380);
 			this.summa.MaximumSize = new System.Drawing.Size(200, 0);
 			this.summa.Name = "summa";
-			this.summa.Size = new System.Drawing.Size(19, 20);
+			this.summa.Size = new System.Drawing.Size(44, 20);
 			this.summa.TabIndex = 32;
-			this.summa.Text = "0";
+			this.summa.Text = "0.00";
 			this.summa.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// total
@@ -762,7 +762,7 @@
 			this.sum_rc50.Name = "sum_rc50";
 			this.sum_rc50.Size = new System.Drawing.Size(90, 23);
 			this.sum_rc50.TabIndex = 55;
-			this.sum_rc50.Text = "0";
+			this.sum_rc50.Text = "0.00";
 			this.sum_rc50.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum_rc25
@@ -772,7 +772,7 @@
 			this.sum_rc25.Name = "sum_rc25";
 			this.sum_rc25.Size = new System.Drawing.Size(90, 23);
 			this.sum_rc25.TabIndex = 56;
-			this.sum_rc25.Text = "0";
+			this.sum_rc25.Text = "0.00";
 			this.sum_rc25.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum_rc10
@@ -782,7 +782,7 @@
 			this.sum_rc10.Name = "sum_rc10";
 			this.sum_rc10.Size = new System.Drawing.Size(90, 23);
 			this.sum_rc10.TabIndex = 57;
-			this.sum_rc10.Text = "0";
+			this.sum_rc10.Text = "0.00";
 			this.sum_rc10.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// sum_rc5
@@ -792,7 +792,7 @@
 			this.sum_rc5.Name = "sum_rc5";
 			this.sum_rc5.Size = new System.Drawing.Size(90, 23);
 			this.sum_rc5.TabIndex = 58;
-			this.sum_rc5.Text = "0";
+			this.sum_rc5.Text = "0.00";
 			this.sum_rc5.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// r25

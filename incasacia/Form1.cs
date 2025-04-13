@@ -27,16 +27,12 @@ namespace incasacia
 		}
 
 		private string ExtractExcelTemplate()
-		{
-
-			//string[] resources = Assembly.GetExecutingAssembly().GetManifestResourceNames();
-			//MessageBox.Show(string.Join("\n", resources), "Доступные ресурсы");
+		{			
 			string folderPath = @"D:\incasation\";
 			string templatePath = Path.Combine(folderPath, "sample.xlsx");
 
 			if (!File.Exists(templatePath))
 			{
-
 				using (Stream resourcesStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("incasacia.Resources.sample.xlsx"))
 				{
 					if (resourcesStream != null)
@@ -136,10 +132,66 @@ namespace incasacia
 						ws.Cell("M45").Value = bags_number.Text;//номер мешка
 						ws.Cell("AH45").Value = bags_number.Text;//номер мешка
 						ws.Cell("M88").Value = bags_number.Text;//номер мешка
-						ws.Cell("AH88").Value = bags_number.Text;//номер мешка
+						ws.Cell("AH88").Value = bags_number.Text;//номер мешка						
+
+						//ws.Cell("T16").Value = NumberToWordsRub(decimal.Parse(summa.Text)); // прописью
+
+						string full = NumberToWordsRub(decimal.Parse(summa.Text));
+
+						// Разбиваем строку на слова
+						var words = full.Split(' ',(char)StringSplitOptions.RemoveEmptyEntries).ToList();
+
+						// Список блоков (например: "один миллион", "сто тысяч", "пять рублей")
+						List<string> blocks = new List<string>();
+
+						StringBuilder currentBlock = new StringBuilder();
+						foreach (var word in words)
+						{
+							currentBlock.Append(word + " ");
+
+							// Проверяем, завершился ли блок ключевым словом
+							if (Regex.IsMatch(word, @"^(миллион(?:а|ов)?|тысяч(?:а|и|)?|руб(?:ль|ля|лей)|копе(?:йка|йки|ек))$", RegexOptions.IgnoreCase))
+							{
+								blocks.Add(currentBlock.ToString().Trim());
+								currentBlock.Clear();
+							}
+						}
+
+						// Если осталась "незавершённая" часть — добавим
+						if (currentBlock.Length > 0)
+						{
+							blocks.Add(currentBlock.ToString().Trim());
+						}
+
+						// Теперь формируем строки T16 и A18
+						StringBuilder firstLine = new StringBuilder();
+						StringBuilder secondLine = new StringBuilder();
+
+						foreach (var block in blocks)
+						{
+							string candidate = (firstLine.Length == 0 ? "" : " ") + block;
+
+							if (firstLine.Length + candidate.Length <= 23)
+							{
+								firstLine.Append(candidate);
+							}
+							else
+							{
+								if (secondLine.Length > 0)
+									secondLine.Append(" ");
+								secondLine.Append(block);
+							}
+						}
+
+						ws.Cell("T16").Value = firstLine.ToString(); // первая строка
+						ws.Cell("A18").Value = secondLine.ToString(); // вторая строка
+						ws.Cell("T60").Value = firstLine.ToString(); ; // вторая строка
+						ws.Cell("A62").Value = secondLine.ToString(); // вторая строка
+						ws.Cell("T103").Value = firstLine.ToString(); ; // вторая строка
+						ws.Cell("A105").Value = secondLine.ToString(); // вторая строка
+
 						workbook.SaveAs(excelFilePath);
 					}
-
 				}
 			}
 		}
@@ -408,7 +460,7 @@ namespace incasacia
 
 		private void total_sum_LabelChanged(object sender, EventArgs e)
 		{
-			double sum = 0;
+			double sum = 0.00;
 			TextBox[] textBoxes = { sum500, sum200, sum100, sum50, sum25, sum10, sum5, sum3, sum1, sum_rc50, sum_rc25, sum_rc10, sum_rc5 };
 
 			foreach (TextBox tb in textBoxes)
@@ -421,10 +473,10 @@ namespace incasacia
 			summa.Text = sum.ToString("F2");
 		}
 
-		public static string NumberToWordsRub(long number)
+		public static string NumberToWordsRub(decimal amount)
 		{
-			if (number == 0)
-				return "ноль рублей";
+			if (amount == 0)
+				return "ноль рублей 00 копеек";
 
 			string[] units = { "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять" };
 			string[] unitsFemale = { "одна", "две", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять" };
@@ -434,8 +486,87 @@ namespace incasacia
 			string[] thousandsForms = { "тысяча", "тысячи", "тысяч" };
 			string[] millionsForms = { "миллион", "миллиона", "миллионов" };
 			string[] rubForms = { "рубль", "рубля", "рублей" };
+			string[] kopForms = { "копейка", "копейки", "копеек" };
 
 			StringBuilder result = new StringBuilder();
+
+			long intPart=(long)Math.Floor(amount);
+			int kopeks = (int)Math.Round((amount - intPart) * 100);
+
+			int GetFormIndex(int number)
+			{ 
+				int n = number % 100;
+				if(n>=11 && n <=19) return 2;
+				int last = n % 10;
+				if (last == 1) return 0;
+				if (last >= 2 && last <= 4) return 1;
+				return 2;
+			}
+
+			void AppendTriplet(int n, bool isFemale, string[] forms)
+			{
+				if (n==0) return;
+
+				if(n >= 100)
+				{
+					int h = n / 100;
+					if (h > 0)
+					{
+						result.Append(hundreds[h - 1] + " ");
+					}						
+				}				
+
+				int remainder = n % 100;
+
+				if (remainder >= 10 && remainder < 20)
+				{
+					result.Append(teens[remainder - 10] + " ");
+				}
+				else
+				{	
+					int ten = remainder / 10;
+					int unit = remainder % 10;
+
+					if (ten >=2 )
+					{
+						result.Append(tens[ten - 1] + " ");
+					}
+
+					if (unit > 0)
+					{
+						if (isFemale)
+						{
+							result.Append(unitsFemale[unit - 1] + " ");
+						}
+						else
+						{
+							result.Append(units[unit - 1] + " ");
+						}
+					}					
+				}
+				int formIndex = GetFormIndex(n);
+				result.Append(forms[formIndex] + " ");
+			}
+
+			if (intPart >= 1000000)
+			{
+				int millions = (int)(intPart / 1000000);
+				AppendTriplet(millions, false, millionsForms);
+				intPart %= 1000000;
+			}
+
+			if (intPart >= 1000 && intPart<1000000)
+			{
+				int thousands = (int)(intPart / 1000);
+				AppendTriplet(thousands, true, thousandsForms);
+				intPart %= 1000;
+			}
+
+			AppendTriplet((int)intPart, false, rubForms);
+
+			result.Append($"{kopeks:00} {kopForms[GetFormIndex(kopeks)]}{"(000)"}");
+
+			return result.ToString().Trim();
 		}
 	}
 }
