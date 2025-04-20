@@ -90,10 +90,10 @@
 			this.sum_rc5 = new System.Windows.Forms.TextBox();
 			this.r25 = new System.Windows.Forms.TextBox();
 			this.r50 = new System.Windows.Forms.TextBox();
-			this.c5 = new System.Windows.Forms.Label();
-			this.c10 = new System.Windows.Forms.Label();
-			this.c25 = new System.Windows.Forms.Label();
-			this.c50 = new System.Windows.Forms.Label();
+			this.k5 = new System.Windows.Forms.Label();
+			this.k10 = new System.Windows.Forms.Label();
+			this.k25 = new System.Windows.Forms.Label();
+			this.k50 = new System.Windows.Forms.Label();
 			this.m1 = new System.Windows.Forms.Label();
 			this.m3 = new System.Windows.Forms.Label();
 			this.m5 = new System.Windows.Forms.Label();
@@ -339,10 +339,10 @@
 			this.rub.Controls.Add(this.summa);
 			this.rub.Controls.Add(this.total);
 			this.rub.Controls.Add(this.tableLayoutPanel1);
-			this.rub.Controls.Add(this.c5);
-			this.rub.Controls.Add(this.c10);
-			this.rub.Controls.Add(this.c25);
-			this.rub.Controls.Add(this.c50);
+			this.rub.Controls.Add(this.k5);
+			this.rub.Controls.Add(this.k10);
+			this.rub.Controls.Add(this.k25);
+			this.rub.Controls.Add(this.k50);
 			this.rub.Controls.Add(this.m1);
 			this.rub.Controls.Add(this.m3);
 			this.rub.Controls.Add(this.m5);
@@ -813,49 +813,49 @@
 			this.r50.Text = "0";
 			this.r50.TextChanged += new System.EventHandler(this.sum50_TextChanged);
 			// 
-			// c5
+			// k5
 			// 
-			this.c5.AutoSize = true;
-			this.c5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.c5.Location = new System.Drawing.Point(415, 335);
-			this.c5.Margin = new System.Windows.Forms.Padding(0);
-			this.c5.Name = "c5";
-			this.c5.Size = new System.Drawing.Size(40, 17);
-			this.c5.TabIndex = 16;
-			this.c5.Text = "0.05";
+			this.k5.AutoSize = true;
+			this.k5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.k5.Location = new System.Drawing.Point(415, 335);
+			this.k5.Margin = new System.Windows.Forms.Padding(0);
+			this.k5.Name = "k5";
+			this.k5.Size = new System.Drawing.Size(40, 17);
+			this.k5.TabIndex = 16;
+			this.k5.Text = "0.05";
 			// 
-			// c10
+			// k10
 			// 
-			this.c10.AutoSize = true;
-			this.c10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.c10.Location = new System.Drawing.Point(415, 309);
-			this.c10.Margin = new System.Windows.Forms.Padding(0);
-			this.c10.Name = "c10";
-			this.c10.Size = new System.Drawing.Size(40, 17);
-			this.c10.TabIndex = 15;
-			this.c10.Text = "0.10";
+			this.k10.AutoSize = true;
+			this.k10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.k10.Location = new System.Drawing.Point(415, 309);
+			this.k10.Margin = new System.Windows.Forms.Padding(0);
+			this.k10.Name = "k10";
+			this.k10.Size = new System.Drawing.Size(40, 17);
+			this.k10.TabIndex = 15;
+			this.k10.Text = "0.10";
 			// 
-			// c25
+			// k25
 			// 
-			this.c25.AutoSize = true;
-			this.c25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.c25.Location = new System.Drawing.Point(415, 283);
-			this.c25.Margin = new System.Windows.Forms.Padding(0);
-			this.c25.Name = "c25";
-			this.c25.Size = new System.Drawing.Size(40, 17);
-			this.c25.TabIndex = 14;
-			this.c25.Text = "0.25";
+			this.k25.AutoSize = true;
+			this.k25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.k25.Location = new System.Drawing.Point(415, 283);
+			this.k25.Margin = new System.Windows.Forms.Padding(0);
+			this.k25.Name = "k25";
+			this.k25.Size = new System.Drawing.Size(40, 17);
+			this.k25.TabIndex = 14;
+			this.k25.Text = "0.25";
 			// 
-			// c50
+			// k50
 			// 
-			this.c50.AutoSize = true;
-			this.c50.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.c50.Location = new System.Drawing.Point(415, 257);
-			this.c50.Margin = new System.Windows.Forms.Padding(0);
-			this.c50.Name = "c50";
-			this.c50.Size = new System.Drawing.Size(40, 17);
-			this.c50.TabIndex = 13;
-			this.c50.Text = "0.50";
+			this.k50.AutoSize = true;
+			this.k50.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.k50.Location = new System.Drawing.Point(415, 257);
+			this.k50.Margin = new System.Windows.Forms.Padding(0);
+			this.k50.Name = "k50";
+			this.k50.Size = new System.Drawing.Size(40, 17);
+			this.k50.TabIndex = 13;
+			this.k50.Text = "0.50";
 			// 
 			// m1
 			// 
@@ -1046,10 +1046,10 @@
 		private System.Windows.Forms.Label m200;
 		private System.Windows.Forms.Label m500;
 		private System.Windows.Forms.Label m1;
-		private System.Windows.Forms.Label c5;
-		private System.Windows.Forms.Label c10;
-		private System.Windows.Forms.Label c25;
-		private System.Windows.Forms.Label c50;
+		private System.Windows.Forms.Label k5;
+		private System.Windows.Forms.Label k10;
+		private System.Windows.Forms.Label k25;
+		private System.Windows.Forms.Label k50;
 		private System.Windows.Forms.TextBox rc5;
 		private System.Windows.Forms.TextBox rc10;
 		private System.Windows.Forms.TextBox rc25;

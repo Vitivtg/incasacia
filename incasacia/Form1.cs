@@ -13,6 +13,7 @@ using ClosedXML.Excel;
 using System.Reflection;
 using DocumentFormat.OpenXml.Drawing.Diagrams;
 using System.Text.RegularExpressions;
+using DocumentFormat.OpenXml.Office2010.ExcelAc;
 
 namespace incasacia
 {
@@ -122,6 +123,8 @@ namespace incasacia
 						ws.Cell("N97").Value = summa.Text;//сумма
 						ws.Cell("AD95").Value = summa.Text;//сумма
 						ws.Cell("AH100").Value = summa.Text;//сумма
+						ws.Cell("AD246").Value = summa.Text;//сумма
+						ws.Cell("AD290").Value = summa.Text;//сумма
 
 						ws.Cell("M12").Value = bank_name.Text;//наименование банка
 						ws.Cell("M56").Value = bank_name.Text;//наименование банка
@@ -134,61 +137,43 @@ namespace incasacia
 						ws.Cell("M88").Value = bags_number.Text;//номер мешка
 						ws.Cell("AH88").Value = bags_number.Text;//номер мешка						
 
-						//ws.Cell("T16").Value = NumberToWordsRub(decimal.Parse(summa.Text)); // прописью
-
 						string full = NumberToWordsRub(decimal.Parse(summa.Text));
 
-						// Разбиваем строку на слова
-						var words = full.Split(' ',(char)StringSplitOptions.RemoveEmptyEntries).ToList();
+						// Разбиваем строку по словам
+						var words = full.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
-						// Список блоков (например: "один миллион", "сто тысяч", "пять рублей")
-						List<string> blocks = new List<string>();
+						// Получаем первые 3 слова
+						string firstLine = string.Join(" ", words.Take(3));
 
-						StringBuilder currentBlock = new StringBuilder();
-						foreach (var word in words)
-						{
-							currentBlock.Append(word + " ");
+						// Остаток — во вторую строку
+						string secondLine = string.Join(" ", words.Skip(3)) + " (000)";
 
-							// Проверяем, завершился ли блок ключевым словом
-							if (Regex.IsMatch(word, @"^(миллион(?:а|ов)?|тысяч(?:а|и|)?|руб(?:ль|ля|лей)|копе(?:йка|йки|ек))$", RegexOptions.IgnoreCase))
-							{
-								blocks.Add(currentBlock.ToString().Trim());
-								currentBlock.Clear();
-							}
-						}
+						// Записываем в Excel
 
-						// Если осталась "незавершённая" часть — добавим
-						if (currentBlock.Length > 0)
-						{
-							blocks.Add(currentBlock.ToString().Trim());
-						}
-
-						// Теперь формируем строки T16 и A18
-						StringBuilder firstLine = new StringBuilder();
-						StringBuilder secondLine = new StringBuilder();
-
-						foreach (var block in blocks)
-						{
-							string candidate = (firstLine.Length == 0 ? "" : " ") + block;
-
-							if (firstLine.Length + candidate.Length <= 23)
-							{
-								firstLine.Append(candidate);
-							}
-							else
-							{
-								if (secondLine.Length > 0)
-									secondLine.Append(" ");
-								secondLine.Append(block);
-							}
-						}
 
 						ws.Cell("T16").Value = firstLine.ToString(); // первая строка
 						ws.Cell("A18").Value = secondLine.ToString(); // вторая строка
-						ws.Cell("T60").Value = firstLine.ToString(); ; // вторая строка
+						ws.Cell("T60").Value = firstLine.ToString(); // вторая строка
 						ws.Cell("A62").Value = secondLine.ToString(); // вторая строка
-						ws.Cell("T103").Value = firstLine.ToString(); ; // вторая строка
+						ws.Cell("T103").Value = firstLine.ToString(); // вторая строка
 						ws.Cell("A105").Value = secondLine.ToString(); // вторая строка
+
+						List<Label> banknoteBox = new List<Label> { m500, m200, m100, m50, m25, m10, m5, m3, m1, k50, k25, k10, k5 };
+						List<TextBox> banknoteCount = new List<TextBox> { r500, r200, r100, r50, r25, r10, r5, r3, r1, rc50, rc25, rc10, rc5 };
+						List<TextBox> banknoteSum = new List<TextBox> { sum500, sum200, sum100, sum50, sum25, sum10, sum5, sum3, sum1, sum_rc50, sum_rc25, sum_rc10, sum_rc5 };
+
+						int startRow = 210;
+
+						foreach (var box in banknoteCount)
+						{
+							if(!string.IsNullOrWhiteSpace(box.Text) && box.Text!="0")
+							{
+								ws.Cell($"B{startRow}").Value = banknoteBox[banknoteCount.IndexOf(box)].Text;
+								ws.Cell($"J{startRow}").Value = banknoteCount[banknoteCount.IndexOf(box)].Text;	
+								ws.Cell($"AA{startRow}").Value = banknoteSum[banknoteCount.IndexOf(box)].Text;
+								startRow+=2;								
+							}
+						}
 
 						workbook.SaveAs(excelFilePath);
 					}
@@ -243,7 +228,7 @@ namespace incasacia
 			public string SchetRub { get; set; }
 			public string SchetUsd { get; set; }
 			public string SchetLei { get; set; }
-		}
+		}		
 
 		private void save_Click(object sender, EventArgs e)
 		{
@@ -490,13 +475,13 @@ namespace incasacia
 
 			StringBuilder result = new StringBuilder();
 
-			long intPart=(long)Math.Floor(amount);
+			long intPart = (long)Math.Floor(amount);
 			int kopeks = (int)Math.Round((amount - intPart) * 100);
 
 			int GetFormIndex(int number)
-			{ 
+			{
 				int n = number % 100;
-				if(n>=11 && n <=19) return 2;
+				if (n >= 11 && n <= 19) return 2;
 				int last = n % 10;
 				if (last == 1) return 0;
 				if (last >= 2 && last <= 4) return 1;
@@ -505,29 +490,33 @@ namespace incasacia
 
 			void AppendTriplet(int n, bool isFemale, string[] forms)
 			{
-				if (n==0) return;
+				if (n == 0) return;
 
-				if(n >= 100)
+				if (n >= 100)
 				{
 					int h = n / 100;
 					if (h > 0)
 					{
 						result.Append(hundreds[h - 1] + " ");
-					}						
-				}				
+					}
+				}
 
 				int remainder = n % 100;
 
-				if (remainder >= 10 && remainder < 20)
+				if (remainder == 10)
 				{
-					result.Append(teens[remainder - 10] + " ");
+					result.Append(tens[0] + " "); // "десять"
+				}
+				else if (remainder > 10 && remainder < 20)
+				{
+					result.Append(teens[remainder - 11] + " "); // "одиннадцать" и т.п.
 				}
 				else
-				{	
+				{
 					int ten = remainder / 10;
 					int unit = remainder % 10;
 
-					if (ten >=2 )
+					if (ten >= 2)
 					{
 						result.Append(tens[ten - 1] + " ");
 					}
@@ -542,8 +531,9 @@ namespace incasacia
 						{
 							result.Append(units[unit - 1] + " ");
 						}
-					}					
+					}
 				}
+
 				int formIndex = GetFormIndex(n);
 				result.Append(forms[formIndex] + " ");
 			}
@@ -555,7 +545,7 @@ namespace incasacia
 				intPart %= 1000000;
 			}
 
-			if (intPart >= 1000 && intPart<1000000)
+			if (intPart >= 1000 && intPart < 1000000)
 			{
 				int thousands = (int)(intPart / 1000);
 				AppendTriplet(thousands, true, thousandsForms);
@@ -564,7 +554,7 @@ namespace incasacia
 
 			AppendTriplet((int)intPart, false, rubForms);
 
-			result.Append($"{kopeks:00} {kopForms[GetFormIndex(kopeks)]}{"(000)"}");
+			result.Append($"{kopeks:00} {kopForms[GetFormIndex(kopeks)]}");
 
 			return result.ToString().Trim();
 		}
