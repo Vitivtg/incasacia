@@ -46,6 +46,54 @@
 			this.azs_label = new System.Windows.Forms.Label();
 			this.dol = new System.Windows.Forms.TabPage();
 			this.lei = new System.Windows.Forms.TabPage();
+			this.save_inc_lei = new System.Windows.Forms.Button();
+			this.label17 = new System.Windows.Forms.Label();
+			this.label18 = new System.Windows.Forms.Label();
+			this.label19 = new System.Windows.Forms.Label();
+			this.label20 = new System.Windows.Forms.Label();
+			this.label21 = new System.Windows.Forms.Label();
+			this.label22 = new System.Windows.Forms.Label();
+			this.label23 = new System.Windows.Forms.Label();
+			this.label24 = new System.Windows.Forms.Label();
+			this.label25 = new System.Windows.Forms.Label();
+			this.label26 = new System.Windows.Forms.Label();
+			this.summa_lei = new System.Windows.Forms.Label();
+			this.total_lei = new System.Windows.Forms.Label();
+			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.l1 = new System.Windows.Forms.TextBox();
+			this.l5 = new System.Windows.Forms.TextBox();
+			this.l10 = new System.Windows.Forms.TextBox();
+			this.l100 = new System.Windows.Forms.TextBox();
+			this.l50 = new System.Windows.Forms.TextBox();
+			this.sum_l1000 = new System.Windows.Forms.TextBox();
+			this.l1000 = new System.Windows.Forms.TextBox();
+			this.sum_l500 = new System.Windows.Forms.TextBox();
+			this.sum_l200 = new System.Windows.Forms.TextBox();
+			this.sum_l100 = new System.Windows.Forms.TextBox();
+			this.sum_l50 = new System.Windows.Forms.TextBox();
+			this.sum_l20 = new System.Windows.Forms.TextBox();
+			this.sum_l10 = new System.Windows.Forms.TextBox();
+			this.sum_l5 = new System.Windows.Forms.TextBox();
+			this.l200 = new System.Windows.Forms.TextBox();
+			this.l500 = new System.Windows.Forms.TextBox();
+			this.l20 = new System.Windows.Forms.TextBox();
+			this.l2 = new System.Windows.Forms.TextBox();
+			this.sum_l2 = new System.Windows.Forms.TextBox();
+			this.sum_l1 = new System.Windows.Forms.TextBox();
+			this.ll1 = new System.Windows.Forms.Label();
+			this.ll2 = new System.Windows.Forms.Label();
+			this.ll5 = new System.Windows.Forms.Label();
+			this.ll10 = new System.Windows.Forms.Label();
+			this.ll20 = new System.Windows.Forms.Label();
+			this.ll50 = new System.Windows.Forms.Label();
+			this.ll100 = new System.Windows.Forms.Label();
+			this.ll1000 = new System.Windows.Forms.Label();
+			this.ll200 = new System.Windows.Forms.Label();
+			this.ll500 = new System.Windows.Forms.Label();
+			this.bags_number_lei = new System.Windows.Forms.TextBox();
+			this.bag_label_lei = new System.Windows.Forms.Label();
+			this.date_time_lei = new System.Windows.Forms.DateTimePicker();
+			this.data_label_lei = new System.Windows.Forms.Label();
 			this.rub = new System.Windows.Forms.TabPage();
 			this.save_inc = new System.Windows.Forms.Button();
 			this.label13 = new System.Windows.Forms.Label();
@@ -110,6 +158,8 @@
 			this.setings.SuspendLayout();
 			this.settings.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
+			this.lei.SuspendLayout();
+			this.tableLayoutPanel3.SuspendLayout();
 			this.rub.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -311,13 +361,571 @@
 			// 
 			// lei
 			// 
+			this.lei.BackColor = System.Drawing.Color.DarkGray;
+			this.lei.Controls.Add(this.save_inc_lei);
+			this.lei.Controls.Add(this.label17);
+			this.lei.Controls.Add(this.label18);
+			this.lei.Controls.Add(this.label19);
+			this.lei.Controls.Add(this.label20);
+			this.lei.Controls.Add(this.label21);
+			this.lei.Controls.Add(this.label22);
+			this.lei.Controls.Add(this.label23);
+			this.lei.Controls.Add(this.label24);
+			this.lei.Controls.Add(this.label25);
+			this.lei.Controls.Add(this.label26);
+			this.lei.Controls.Add(this.summa_lei);
+			this.lei.Controls.Add(this.total_lei);
+			this.lei.Controls.Add(this.tableLayoutPanel3);
+			this.lei.Controls.Add(this.ll1);
+			this.lei.Controls.Add(this.ll2);
+			this.lei.Controls.Add(this.ll5);
+			this.lei.Controls.Add(this.ll10);
+			this.lei.Controls.Add(this.ll20);
+			this.lei.Controls.Add(this.ll50);
+			this.lei.Controls.Add(this.ll100);
+			this.lei.Controls.Add(this.ll1000);
+			this.lei.Controls.Add(this.ll200);
+			this.lei.Controls.Add(this.ll500);
+			this.lei.Controls.Add(this.bags_number_lei);
+			this.lei.Controls.Add(this.bag_label_lei);
+			this.lei.Controls.Add(this.date_time_lei);
+			this.lei.Controls.Add(this.data_label_lei);
+			this.lei.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.lei.Location = new System.Drawing.Point(4, 22);
 			this.lei.Name = "lei";
 			this.lei.Padding = new System.Windows.Forms.Padding(3);
 			this.lei.Size = new System.Drawing.Size(805, 513);
 			this.lei.TabIndex = 2;
 			this.lei.Text = "Леи";
-			this.lei.UseVisualStyleBackColor = true;
+			// 
+			// save_inc_lei
+			// 
+			this.save_inc_lei.BackColor = System.Drawing.Color.Gray;
+			this.save_inc_lei.Location = new System.Drawing.Point(476, 385);
+			this.save_inc_lei.Name = "save_inc_lei";
+			this.save_inc_lei.Size = new System.Drawing.Size(268, 38);
+			this.save_inc_lei.TabIndex = 81;
+			this.save_inc_lei.Text = "Сохранить";
+			this.save_inc_lei.UseVisualStyleBackColor = false;
+			this.save_inc_lei.Click += new System.EventHandler(this.save_lei_click);
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label17.Location = new System.Drawing.Point(473, 275);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(16, 16);
+			this.label17.TabIndex = 77;
+			this.label17.Text = "X";
+			// 
+			// label18
+			// 
+			this.label18.AutoSize = true;
+			this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label18.Location = new System.Drawing.Point(473, 247);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(16, 16);
+			this.label18.TabIndex = 76;
+			this.label18.Text = "X";
+			// 
+			// label19
+			// 
+			this.label19.AutoSize = true;
+			this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label19.Location = new System.Drawing.Point(473, 219);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(16, 16);
+			this.label19.TabIndex = 75;
+			this.label19.Text = "X";
+			// 
+			// label20
+			// 
+			this.label20.AutoSize = true;
+			this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label20.Location = new System.Drawing.Point(473, 191);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(16, 16);
+			this.label20.TabIndex = 74;
+			this.label20.Text = "X";
+			// 
+			// label21
+			// 
+			this.label21.AutoSize = true;
+			this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label21.Location = new System.Drawing.Point(473, 163);
+			this.label21.Name = "label21";
+			this.label21.Size = new System.Drawing.Size(16, 16);
+			this.label21.TabIndex = 73;
+			this.label21.Text = "X";
+			// 
+			// label22
+			// 
+			this.label22.AutoSize = true;
+			this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label22.Location = new System.Drawing.Point(473, 135);
+			this.label22.Name = "label22";
+			this.label22.Size = new System.Drawing.Size(16, 16);
+			this.label22.TabIndex = 72;
+			this.label22.Text = "X";
+			// 
+			// label23
+			// 
+			this.label23.AutoSize = true;
+			this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label23.Location = new System.Drawing.Point(473, 107);
+			this.label23.Name = "label23";
+			this.label23.Size = new System.Drawing.Size(16, 16);
+			this.label23.TabIndex = 71;
+			this.label23.Text = "X";
+			// 
+			// label24
+			// 
+			this.label24.AutoSize = true;
+			this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label24.Location = new System.Drawing.Point(473, 79);
+			this.label24.Name = "label24";
+			this.label24.Size = new System.Drawing.Size(16, 16);
+			this.label24.TabIndex = 70;
+			this.label24.Text = "X";
+			// 
+			// label25
+			// 
+			this.label25.AutoSize = true;
+			this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label25.Location = new System.Drawing.Point(473, 51);
+			this.label25.Name = "label25";
+			this.label25.Size = new System.Drawing.Size(16, 16);
+			this.label25.TabIndex = 69;
+			this.label25.Text = "X";
+			// 
+			// label26
+			// 
+			this.label26.AutoSize = true;
+			this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label26.Location = new System.Drawing.Point(473, 23);
+			this.label26.Name = "label26";
+			this.label26.Size = new System.Drawing.Size(16, 16);
+			this.label26.TabIndex = 68;
+			this.label26.Text = "X";
+			// 
+			// summa_lei
+			// 
+			this.summa_lei.AutoSize = true;
+			this.summa_lei.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.summa_lei.Location = new System.Drawing.Point(614, 326);
+			this.summa_lei.MaximumSize = new System.Drawing.Size(200, 0);
+			this.summa_lei.Name = "summa_lei";
+			this.summa_lei.Size = new System.Drawing.Size(44, 20);
+			this.summa_lei.TabIndex = 67;
+			this.summa_lei.Text = "0.00";
+			// 
+			// total_lei
+			// 
+			this.total_lei.AutoSize = true;
+			this.total_lei.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.total_lei.Location = new System.Drawing.Point(517, 326);
+			this.total_lei.Name = "total_lei";
+			this.total_lei.Size = new System.Drawing.Size(64, 20);
+			this.total_lei.TabIndex = 66;
+			this.total_lei.Text = "Итого:";
+			this.total_lei.UseMnemonic = false;
+			// 
+			// tableLayoutPanel3
+			// 
+			this.tableLayoutPanel3.ColumnCount = 2;
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
+			this.tableLayoutPanel3.Controls.Add(this.l1, 0, 10);
+			this.tableLayoutPanel3.Controls.Add(this.l5, 0, 7);
+			this.tableLayoutPanel3.Controls.Add(this.l10, 0, 6);
+			this.tableLayoutPanel3.Controls.Add(this.l100, 0, 3);
+			this.tableLayoutPanel3.Controls.Add(this.l50, 0, 4);
+			this.tableLayoutPanel3.Controls.Add(this.sum_l1000, 1, 0);
+			this.tableLayoutPanel3.Controls.Add(this.l1000, 0, 0);
+			this.tableLayoutPanel3.Controls.Add(this.sum_l500, 1, 1);
+			this.tableLayoutPanel3.Controls.Add(this.sum_l200, 1, 2);
+			this.tableLayoutPanel3.Controls.Add(this.sum_l100, 1, 3);
+			this.tableLayoutPanel3.Controls.Add(this.sum_l50, 1, 4);
+			this.tableLayoutPanel3.Controls.Add(this.sum_l20, 1, 5);
+			this.tableLayoutPanel3.Controls.Add(this.sum_l10, 1, 6);
+			this.tableLayoutPanel3.Controls.Add(this.sum_l5, 1, 7);
+			this.tableLayoutPanel3.Controls.Add(this.l200, 0, 2);
+			this.tableLayoutPanel3.Controls.Add(this.l500, 0, 1);
+			this.tableLayoutPanel3.Controls.Add(this.l20, 0, 5);
+			this.tableLayoutPanel3.Controls.Add(this.l2, 0, 9);
+			this.tableLayoutPanel3.Controls.Add(this.sum_l2, 1, 9);
+			this.tableLayoutPanel3.Controls.Add(this.sum_l1, 1, 10);
+			this.tableLayoutPanel3.Location = new System.Drawing.Point(517, 17);
+			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+			this.tableLayoutPanel3.RowCount = 11;
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(194, 281);
+			this.tableLayoutPanel3.TabIndex = 65;
+			// 
+			// l1
+			// 
+			this.l1.Location = new System.Drawing.Point(3, 255);
+			this.l1.Name = "l1";
+			this.l1.Size = new System.Drawing.Size(90, 22);
+			this.l1.TabIndex = 82;
+			this.l1.Text = "0";
+			this.l1.TextChanged += new System.EventHandler(this.sum_l1_TextChanged);
+			// 
+			// l5
+			// 
+			this.l5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l5.Location = new System.Drawing.Point(3, 199);
+			this.l5.Name = "l5";
+			this.l5.Size = new System.Drawing.Size(90, 22);
+			this.l5.TabIndex = 26;
+			this.l5.Text = "0";
+			this.l5.TextChanged += new System.EventHandler(this.sum_l5_TextChanged);
+			// 
+			// l10
+			// 
+			this.l10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l10.Location = new System.Drawing.Point(3, 171);
+			this.l10.Name = "l10";
+			this.l10.Size = new System.Drawing.Size(90, 22);
+			this.l10.TabIndex = 25;
+			this.l10.Text = "0";
+			this.l10.TextChanged += new System.EventHandler(this.sum_l10_TextChanged);
+			// 
+			// l100
+			// 
+			this.l100.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l100.Location = new System.Drawing.Point(3, 87);
+			this.l100.Name = "l100";
+			this.l100.Size = new System.Drawing.Size(90, 22);
+			this.l100.TabIndex = 22;
+			this.l100.Text = "0";
+			this.l100.TextChanged += new System.EventHandler(this.sum_l100_TextChanged);
+			// 
+			// l50
+			// 
+			this.l50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l50.Location = new System.Drawing.Point(3, 115);
+			this.l50.Name = "l50";
+			this.l50.Size = new System.Drawing.Size(90, 22);
+			this.l50.TabIndex = 23;
+			this.l50.Text = "0";
+			this.l50.TextChanged += new System.EventHandler(this.sum_l50_TextChanged);
+			// 
+			// sum_l1000
+			// 
+			this.sum_l1000.Enabled = false;
+			this.sum_l1000.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_l1000.Location = new System.Drawing.Point(100, 3);
+			this.sum_l1000.Name = "sum_l1000";
+			this.sum_l1000.Size = new System.Drawing.Size(90, 22);
+			this.sum_l1000.TabIndex = 19;
+			this.sum_l1000.Text = "0";
+			this.sum_l1000.TextChanged += new System.EventHandler(this.total_sum_lei_LabelChanged);
+			// 
+			// l1000
+			// 
+			this.l1000.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l1000.Location = new System.Drawing.Point(3, 3);
+			this.l1000.Name = "l1000";
+			this.l1000.Size = new System.Drawing.Size(90, 22);
+			this.l1000.TabIndex = 48;
+			this.l1000.Text = "0";
+			this.l1000.TextChanged += new System.EventHandler(this.sum_l1000_TextChanged);
+			// 
+			// sum_l500
+			// 
+			this.sum_l500.Enabled = false;
+			this.sum_l500.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_l500.Location = new System.Drawing.Point(100, 31);
+			this.sum_l500.Name = "sum_l500";
+			this.sum_l500.Size = new System.Drawing.Size(90, 22);
+			this.sum_l500.TabIndex = 49;
+			this.sum_l500.Text = "0";
+			this.sum_l500.TextChanged += new System.EventHandler(this.total_sum_lei_LabelChanged);
+			// 
+			// sum_l200
+			// 
+			this.sum_l200.Enabled = false;
+			this.sum_l200.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_l200.Location = new System.Drawing.Point(100, 59);
+			this.sum_l200.Name = "sum_l200";
+			this.sum_l200.Size = new System.Drawing.Size(90, 22);
+			this.sum_l200.TabIndex = 50;
+			this.sum_l200.Text = "0";
+			this.sum_l200.TextChanged += new System.EventHandler(this.total_sum_lei_LabelChanged);
+			// 
+			// sum_l100
+			// 
+			this.sum_l100.Enabled = false;
+			this.sum_l100.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_l100.Location = new System.Drawing.Point(100, 87);
+			this.sum_l100.Name = "sum_l100";
+			this.sum_l100.Size = new System.Drawing.Size(90, 22);
+			this.sum_l100.TabIndex = 51;
+			this.sum_l100.Text = "0";
+			this.sum_l100.TextChanged += new System.EventHandler(this.total_sum_lei_LabelChanged);
+			// 
+			// sum_l50
+			// 
+			this.sum_l50.Enabled = false;
+			this.sum_l50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_l50.Location = new System.Drawing.Point(100, 115);
+			this.sum_l50.Name = "sum_l50";
+			this.sum_l50.Size = new System.Drawing.Size(90, 22);
+			this.sum_l50.TabIndex = 52;
+			this.sum_l50.Text = "0";
+			this.sum_l50.TextChanged += new System.EventHandler(this.total_sum_lei_LabelChanged);
+			// 
+			// sum_l20
+			// 
+			this.sum_l20.Enabled = false;
+			this.sum_l20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_l20.Location = new System.Drawing.Point(100, 143);
+			this.sum_l20.Name = "sum_l20";
+			this.sum_l20.Size = new System.Drawing.Size(90, 22);
+			this.sum_l20.TabIndex = 53;
+			this.sum_l20.Text = "0";
+			this.sum_l20.TextChanged += new System.EventHandler(this.total_sum_lei_LabelChanged);
+			// 
+			// sum_l10
+			// 
+			this.sum_l10.Enabled = false;
+			this.sum_l10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_l10.Location = new System.Drawing.Point(100, 171);
+			this.sum_l10.Name = "sum_l10";
+			this.sum_l10.Size = new System.Drawing.Size(90, 22);
+			this.sum_l10.TabIndex = 54;
+			this.sum_l10.Text = "0";
+			this.sum_l10.TextChanged += new System.EventHandler(this.total_sum_lei_LabelChanged);
+			// 
+			// sum_l5
+			// 
+			this.sum_l5.Enabled = false;
+			this.sum_l5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_l5.Location = new System.Drawing.Point(100, 199);
+			this.sum_l5.Name = "sum_l5";
+			this.sum_l5.Size = new System.Drawing.Size(90, 22);
+			this.sum_l5.TabIndex = 55;
+			this.sum_l5.Text = "0";
+			this.sum_l5.TextChanged += new System.EventHandler(this.total_sum_lei_LabelChanged);
+			// 
+			// l200
+			// 
+			this.l200.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l200.Location = new System.Drawing.Point(3, 59);
+			this.l200.Name = "l200";
+			this.l200.Size = new System.Drawing.Size(90, 22);
+			this.l200.TabIndex = 21;
+			this.l200.Text = "0";
+			this.l200.TextChanged += new System.EventHandler(this.sum_l200_TextChanged);
+			// 
+			// l500
+			// 
+			this.l500.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l500.Location = new System.Drawing.Point(3, 31);
+			this.l500.Name = "l500";
+			this.l500.Size = new System.Drawing.Size(90, 22);
+			this.l500.TabIndex = 20;
+			this.l500.Text = "0";
+			this.l500.TextChanged += new System.EventHandler(this.sum_l500_TextChanged);
+			// 
+			// l20
+			// 
+			this.l20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l20.Location = new System.Drawing.Point(3, 143);
+			this.l20.Name = "l20";
+			this.l20.Size = new System.Drawing.Size(90, 22);
+			this.l20.TabIndex = 24;
+			this.l20.Text = "0";
+			this.l20.TextChanged += new System.EventHandler(this.sum_l20_TextChanged);
+			// 
+			// l2
+			// 
+			this.l2.Location = new System.Drawing.Point(3, 227);
+			this.l2.Name = "l2";
+			this.l2.Size = new System.Drawing.Size(90, 22);
+			this.l2.TabIndex = 56;
+			this.l2.Text = "0";
+			this.l2.TextChanged += new System.EventHandler(this.sum_l2_TextChanged);
+			// 
+			// sum_l2
+			// 
+			this.sum_l2.Enabled = false;
+			this.sum_l2.Location = new System.Drawing.Point(100, 227);
+			this.sum_l2.Name = "sum_l2";
+			this.sum_l2.Size = new System.Drawing.Size(90, 22);
+			this.sum_l2.TabIndex = 57;
+			this.sum_l2.Text = "0";
+			this.sum_l2.TextChanged += new System.EventHandler(this.total_sum_lei_LabelChanged);
+			// 
+			// sum_l1
+			// 
+			this.sum_l1.Enabled = false;
+			this.sum_l1.Location = new System.Drawing.Point(100, 255);
+			this.sum_l1.Name = "sum_l1";
+			this.sum_l1.Size = new System.Drawing.Size(90, 22);
+			this.sum_l1.TabIndex = 83;
+			this.sum_l1.Text = "0";
+			this.sum_l1.TextChanged += new System.EventHandler(this.total_sum_lei_LabelChanged);
+			// 
+			// ll1
+			// 
+			this.ll1.AutoSize = true;
+			this.ll1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ll1.Location = new System.Drawing.Point(433, 275);
+			this.ll1.Margin = new System.Windows.Forms.Padding(0);
+			this.ll1.Name = "ll1";
+			this.ll1.Size = new System.Drawing.Size(17, 17);
+			this.ll1.TabIndex = 61;
+			this.ll1.Text = "1";
+			// 
+			// ll2
+			// 
+			this.ll2.AutoSize = true;
+			this.ll2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ll2.Location = new System.Drawing.Point(433, 247);
+			this.ll2.Margin = new System.Windows.Forms.Padding(0);
+			this.ll2.Name = "ll2";
+			this.ll2.Size = new System.Drawing.Size(17, 17);
+			this.ll2.TabIndex = 60;
+			this.ll2.Text = "2";
+			// 
+			// ll5
+			// 
+			this.ll5.AutoSize = true;
+			this.ll5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ll5.Location = new System.Drawing.Point(433, 219);
+			this.ll5.Margin = new System.Windows.Forms.Padding(0);
+			this.ll5.Name = "ll5";
+			this.ll5.Size = new System.Drawing.Size(17, 17);
+			this.ll5.TabIndex = 59;
+			this.ll5.Text = "5";
+			// 
+			// ll10
+			// 
+			this.ll10.AutoSize = true;
+			this.ll10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ll10.Location = new System.Drawing.Point(424, 191);
+			this.ll10.Margin = new System.Windows.Forms.Padding(0);
+			this.ll10.Name = "ll10";
+			this.ll10.Size = new System.Drawing.Size(26, 17);
+			this.ll10.TabIndex = 58;
+			this.ll10.Text = "10";
+			// 
+			// ll20
+			// 
+			this.ll20.AutoSize = true;
+			this.ll20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ll20.Location = new System.Drawing.Point(424, 163);
+			this.ll20.Margin = new System.Windows.Forms.Padding(0);
+			this.ll20.Name = "ll20";
+			this.ll20.Size = new System.Drawing.Size(26, 17);
+			this.ll20.TabIndex = 57;
+			this.ll20.Text = "20";
+			// 
+			// ll50
+			// 
+			this.ll50.AutoSize = true;
+			this.ll50.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ll50.Location = new System.Drawing.Point(424, 135);
+			this.ll50.Margin = new System.Windows.Forms.Padding(0);
+			this.ll50.Name = "ll50";
+			this.ll50.Size = new System.Drawing.Size(26, 17);
+			this.ll50.TabIndex = 56;
+			this.ll50.Text = "50";
+			// 
+			// ll100
+			// 
+			this.ll100.AutoSize = true;
+			this.ll100.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ll100.Location = new System.Drawing.Point(415, 107);
+			this.ll100.Margin = new System.Windows.Forms.Padding(0);
+			this.ll100.Name = "ll100";
+			this.ll100.Size = new System.Drawing.Size(35, 17);
+			this.ll100.TabIndex = 55;
+			this.ll100.Text = "100";
+			// 
+			// ll1000
+			// 
+			this.ll1000.AutoSize = true;
+			this.ll1000.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ll1000.Location = new System.Drawing.Point(406, 23);
+			this.ll1000.Margin = new System.Windows.Forms.Padding(0);
+			this.ll1000.Name = "ll1000";
+			this.ll1000.Size = new System.Drawing.Size(44, 17);
+			this.ll1000.TabIndex = 52;
+			this.ll1000.Text = "1000";
+			// 
+			// ll200
+			// 
+			this.ll200.AutoSize = true;
+			this.ll200.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ll200.Location = new System.Drawing.Point(415, 79);
+			this.ll200.Margin = new System.Windows.Forms.Padding(0);
+			this.ll200.Name = "ll200";
+			this.ll200.Size = new System.Drawing.Size(35, 17);
+			this.ll200.TabIndex = 54;
+			this.ll200.Text = "200";
+			// 
+			// ll500
+			// 
+			this.ll500.AutoSize = true;
+			this.ll500.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ll500.Location = new System.Drawing.Point(415, 51);
+			this.ll500.Margin = new System.Windows.Forms.Padding(0);
+			this.ll500.Name = "ll500";
+			this.ll500.Size = new System.Drawing.Size(35, 17);
+			this.ll500.TabIndex = 53;
+			this.ll500.Text = "500";
+			// 
+			// bags_number_lei
+			// 
+			this.bags_number_lei.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.bags_number_lei.Location = new System.Drawing.Point(161, 65);
+			this.bags_number_lei.Name = "bags_number_lei";
+			this.bags_number_lei.Size = new System.Drawing.Size(82, 23);
+			this.bags_number_lei.TabIndex = 51;
+			// 
+			// bag_label_lei
+			// 
+			this.bag_label_lei.AutoSize = true;
+			this.bag_label_lei.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.bag_label_lei.Location = new System.Drawing.Point(17, 68);
+			this.bag_label_lei.Name = "bag_label_lei";
+			this.bag_label_lei.Size = new System.Drawing.Size(73, 17);
+			this.bag_label_lei.TabIndex = 50;
+			this.bag_label_lei.Text = "Сумка №";
+			// 
+			// date_time_lei
+			// 
+			this.date_time_lei.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.date_time_lei.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.date_time_lei.Location = new System.Drawing.Point(160, 23);
+			this.date_time_lei.Name = "date_time_lei";
+			this.date_time_lei.Size = new System.Drawing.Size(83, 23);
+			this.date_time_lei.TabIndex = 49;
+			this.date_time_lei.Value = new System.DateTime(2025, 3, 12, 0, 0, 0, 0);
+			// 
+			// data_label_lei
+			// 
+			this.data_label_lei.AutoSize = true;
+			this.data_label_lei.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.data_label_lei.Location = new System.Drawing.Point(17, 28);
+			this.data_label_lei.Name = "data_label_lei";
+			this.data_label_lei.Size = new System.Drawing.Size(121, 17);
+			this.data_label_lei.TabIndex = 48;
+			this.data_label_lei.Text = "Выберите дату";
 			// 
 			// rub
 			// 
@@ -367,7 +975,7 @@
 			// save_inc
 			// 
 			this.save_inc.BackColor = System.Drawing.Color.Gray;
-			this.save_inc.Location = new System.Drawing.Point(430, 463);
+			this.save_inc.Location = new System.Drawing.Point(475, 424);
 			this.save_inc.Name = "save_inc";
 			this.save_inc.Size = new System.Drawing.Size(268, 38);
 			this.save_inc.TabIndex = 47;
@@ -496,13 +1104,12 @@
 			// 
 			this.summa.AutoSize = true;
 			this.summa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.summa.Location = new System.Drawing.Point(593, 380);
+			this.summa.Location = new System.Drawing.Point(613, 380);
 			this.summa.MaximumSize = new System.Drawing.Size(200, 0);
 			this.summa.Name = "summa";
 			this.summa.Size = new System.Drawing.Size(44, 20);
 			this.summa.TabIndex = 32;
 			this.summa.Text = "0.00";
-			this.summa.TextChanged += new System.EventHandler(this.total_sum_LabelChanged);
 			// 
 			// total
 			// 
@@ -861,7 +1468,7 @@
 			// 
 			this.m1.AutoSize = true;
 			this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m1.Location = new System.Drawing.Point(415, 231);
+			this.m1.Location = new System.Drawing.Point(433, 231);
 			this.m1.Margin = new System.Windows.Forms.Padding(0);
 			this.m1.Name = "m1";
 			this.m1.Size = new System.Drawing.Size(17, 17);
@@ -872,7 +1479,7 @@
 			// 
 			this.m3.AutoSize = true;
 			this.m3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m3.Location = new System.Drawing.Point(415, 205);
+			this.m3.Location = new System.Drawing.Point(433, 205);
 			this.m3.Margin = new System.Windows.Forms.Padding(0);
 			this.m3.Name = "m3";
 			this.m3.Size = new System.Drawing.Size(17, 17);
@@ -883,7 +1490,7 @@
 			// 
 			this.m5.AutoSize = true;
 			this.m5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m5.Location = new System.Drawing.Point(415, 179);
+			this.m5.Location = new System.Drawing.Point(433, 179);
 			this.m5.Margin = new System.Windows.Forms.Padding(0);
 			this.m5.Name = "m5";
 			this.m5.Size = new System.Drawing.Size(17, 17);
@@ -894,7 +1501,7 @@
 			// 
 			this.m10.AutoSize = true;
 			this.m10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m10.Location = new System.Drawing.Point(415, 153);
+			this.m10.Location = new System.Drawing.Point(424, 153);
 			this.m10.Margin = new System.Windows.Forms.Padding(0);
 			this.m10.Name = "m10";
 			this.m10.Size = new System.Drawing.Size(26, 17);
@@ -905,7 +1512,7 @@
 			// 
 			this.m25.AutoSize = true;
 			this.m25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m25.Location = new System.Drawing.Point(415, 127);
+			this.m25.Location = new System.Drawing.Point(424, 127);
 			this.m25.Margin = new System.Windows.Forms.Padding(0);
 			this.m25.Name = "m25";
 			this.m25.Size = new System.Drawing.Size(26, 17);
@@ -916,7 +1523,7 @@
 			// 
 			this.m50.AutoSize = true;
 			this.m50.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.m50.Location = new System.Drawing.Point(415, 101);
+			this.m50.Location = new System.Drawing.Point(424, 101);
 			this.m50.Margin = new System.Windows.Forms.Padding(0);
 			this.m50.Name = "m50";
 			this.m50.Size = new System.Drawing.Size(26, 17);
@@ -1010,6 +1617,10 @@
 			this.settings.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
+			this.lei.ResumeLayout(false);
+			this.lei.PerformLayout();
+			this.tableLayoutPanel3.ResumeLayout(false);
+			this.tableLayoutPanel3.PerformLayout();
 			this.rub.ResumeLayout(false);
 			this.rub.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
@@ -1098,6 +1709,54 @@
 		private System.Windows.Forms.TextBox schet_usd;
 		private System.Windows.Forms.TextBox schet_lei;
 		private System.Windows.Forms.Button save_inc;
+		private System.Windows.Forms.Button save_inc_lei;
+		private System.Windows.Forms.Label label17;
+		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.Label label20;
+		private System.Windows.Forms.Label label21;
+		private System.Windows.Forms.Label label22;
+		private System.Windows.Forms.Label label23;
+		private System.Windows.Forms.Label label24;
+		private System.Windows.Forms.Label label25;
+		private System.Windows.Forms.Label label26;
+		private System.Windows.Forms.Label summa_lei;
+		private System.Windows.Forms.Label total_lei;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+		private System.Windows.Forms.Label ll1;
+		private System.Windows.Forms.Label ll2;
+		private System.Windows.Forms.Label ll5;
+		private System.Windows.Forms.Label ll10;
+		private System.Windows.Forms.Label ll20;
+		private System.Windows.Forms.Label ll50;
+		private System.Windows.Forms.Label ll100;
+		private System.Windows.Forms.Label ll1000;
+		private System.Windows.Forms.Label ll200;
+		private System.Windows.Forms.Label ll500;
+		private System.Windows.Forms.TextBox bags_number_lei;
+		private System.Windows.Forms.Label bag_label_lei;
+		private System.Windows.Forms.DateTimePicker date_time_lei;
+		private System.Windows.Forms.Label data_label_lei;
+		private System.Windows.Forms.TextBox l5;
+		private System.Windows.Forms.TextBox l10;
+		private System.Windows.Forms.TextBox l100;
+		private System.Windows.Forms.TextBox l50;
+		private System.Windows.Forms.TextBox sum_l1000;
+		private System.Windows.Forms.TextBox l1000;
+		private System.Windows.Forms.TextBox sum_l500;
+		private System.Windows.Forms.TextBox sum_l200;
+		private System.Windows.Forms.TextBox sum_l100;
+		private System.Windows.Forms.TextBox sum_l50;
+		private System.Windows.Forms.TextBox sum_l20;
+		private System.Windows.Forms.TextBox sum_l10;
+		private System.Windows.Forms.TextBox sum_l5;
+		private System.Windows.Forms.TextBox l200;
+		private System.Windows.Forms.TextBox l500;
+		private System.Windows.Forms.TextBox l20;
+		private System.Windows.Forms.TextBox l2;
+		private System.Windows.Forms.TextBox sum_l2;
+		private System.Windows.Forms.TextBox l1;
+		private System.Windows.Forms.TextBox sum_l1;
 	}
 }
 
