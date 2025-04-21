@@ -53,9 +53,136 @@ namespace incasacia
 			return templatePath;
 		}
 
+		private void save_lei_click(object sender, EventArgs e)
+		{
+			string folderPath = Path.Combine(
+				Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "incasation", "lei");
+
+			if (!Directory.Exists(folderPath))
+			{
+				Directory.CreateDirectory(folderPath);
+			}
+
+			string baseFileName = date_time_lei.Text;
+			string extension = ".xlsx";
+			string excelFilePath = Path.Combine(folderPath, baseFileName + extension);
+
+			int suffix = 1;
+			while (File.Exists(excelFilePath))
+			{
+				string newFileName = $"{baseFileName} ({suffix}){extension}";
+				excelFilePath = Path.Combine(folderPath, newFileName);
+				suffix++;
+			}
+
+			string templatePath = ExtractExcelTemplate();
+
+			if (templatePath == null)
+			{
+				return;
+			}
+			else
+			{
+				File.Copy(templatePath, excelFilePath, true);
+
+				using (var workbook = new XLWorkbook(templatePath))
+				{
+					var ws = workbook.Worksheet(1);
+					string input = bags_number_lei.Text;
+
+					if (!Regex.IsMatch(input, @"^\d{3}\/\d$") || !DateTime.TryParse(date_time_lei.Text, out DateTime date))
+					{
+						MessageBox.Show("Неверный формат номера мешка или даты!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						return;
+					}
+					else
+					{
+						ws.Cell("D7").Value = azs.Text + "  " + company.Text; //от кого
+						ws.Cell("D51").Value = azs.Text + "  " + company.Text;//от кого
+						ws.Cell("D94").Value = azs.Text + "  " + company.Text;//от кого					
+
+						ws.Cell("B4").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
+						ws.Cell("B48").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
+						ws.Cell("B91").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
+
+						ws.Cell("R9").Value = schet_lei.Text;//счет №	
+						ws.Cell("R53").Value = schet_lei.Text;//счет №
+						ws.Cell("R96").Value = schet_lei.Text;//счет №
+
+						ws.Cell("E9").Value = company.Text;//наименование банка
+						ws.Cell("E53").Value = company.Text;//наименование банка
+						ws.Cell("E96").Value = company.Text;//наименование банка
+
+						ws.Cell("N10").Value = summa_lei.Text;//сумма
+						ws.Cell("AD8").Value = summa_lei.Text;//сумма
+						ws.Cell("AH13").Value = summa_lei.Text;//сумма
+						ws.Cell("N54").Value = summa_lei.Text;//сумма
+						ws.Cell("AD52").Value = summa_lei.Text;//сумма
+						ws.Cell("AH57").Value = summa_lei.Text;//сумма
+						ws.Cell("N97").Value = summa_lei.Text;//сумма
+						ws.Cell("AD95").Value = summa_lei.Text;//сумма
+						ws.Cell("AH100").Value = summa_lei.Text;//сумма
+						ws.Cell("AD246").Value = summa_lei.Text;//сумма
+						ws.Cell("AD290").Value = summa_lei.Text;//сумма
+
+						ws.Cell("M12").Value = bank_name.Text;//наименование банка
+						ws.Cell("M56").Value = bank_name.Text;//наименование банка
+						ws.Cell("M99").Value = bank_name.Text;//наименование банка
+
+						ws.Cell("M1").Value = bags_number_lei.Text;//номер мешка
+						ws.Cell("AH1").Value = bags_number_lei.Text;//номер мешка
+						ws.Cell("M45").Value = bags_number_lei.Text;//номер мешка
+						ws.Cell("AH45").Value = bags_number_lei.Text;//номер мешка
+						ws.Cell("M88").Value = bags_number_lei.Text;//номер мешка
+						ws.Cell("AH88").Value = bags_number_lei.Text;//номер мешка						
+
+						string full = NumberToWordsLei(decimal.Parse(summa_lei.Text));
+
+						// Разбиваем строку по словам
+						var words = full.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+						// Получаем первые 3 слова
+						string firstLine = string.Join(" ", words.Take(3));
+
+						// Остаток — во вторую строку
+						string secondLine = string.Join(" ", words.Skip(3)) + " (498)";
+
+						// Записываем в Excel
+
+						ws.Cell("T16").Value = firstLine.ToString(); // первая строка
+						ws.Cell("A18").Value = secondLine.ToString(); // вторая строка
+						ws.Cell("T60").Value = firstLine.ToString(); // вторая строка
+						ws.Cell("A62").Value = secondLine.ToString(); // вторая строка
+						ws.Cell("T103").Value = firstLine.ToString(); // вторая строка
+						ws.Cell("A105").Value = secondLine.ToString(); // вторая строка
+
+						List<Label> banknoteBox = new List<Label> { ll1000, ll500, ll200, ll100, ll50, ll20, ll10, ll5, ll2, ll1 };
+						List<TextBox> banknoteCount = new List<TextBox> { l1000, l500, l200, l100, l50, l20, l10, l5, l2, l1 };
+						List<TextBox> banknoteSum = new List<TextBox> { sum_l1000, sum_l500, sum_l200, sum_l100, sum_l50, sum_l20, sum_l10, sum_l5, sum_l2, sum_l1 };
+
+						int startRow = 210;
+
+						foreach (var box in banknoteCount)
+						{
+							if (!string.IsNullOrWhiteSpace(box.Text) && box.Text != "0")
+							{
+								ws.Cell($"B{startRow}").Value = banknoteBox[banknoteCount.IndexOf(box)].Text;
+								ws.Cell($"J{startRow}").Value = banknoteCount[banknoteCount.IndexOf(box)].Text;
+								ws.Cell($"AA{startRow}").Value = banknoteSum[banknoteCount.IndexOf(box)].Text;
+								startRow += 2;
+							}
+						}
+
+						workbook.SaveAs(excelFilePath);
+					}
+				}
+			}
+		}
+
 		private void save_rub_click(object sender, EventArgs e)
 		{
-			string folderPath = @"D:\incasation\rub\";
+			string folderPath = Path.Combine(
+				Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "incasation", "rub");
 
 			if (!Directory.Exists(folderPath))
 			{
@@ -65,7 +192,6 @@ namespace incasacia
 			string baseFileName = date_time.Text;
 			string extension = ".xlsx";
 			string excelFilePath = Path.Combine(folderPath, baseFileName + extension);
-
 
 			int suffix = 1;
 			while (File.Exists(excelFilePath))
@@ -104,7 +230,6 @@ namespace incasacia
 						ws.Cell("B4").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 						ws.Cell("B48").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 						ws.Cell("B91").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
-
 
 						ws.Cell("R9").Value = schet_rub.Text;//счет №	
 						ws.Cell("R53").Value = schet_rub.Text;//счет №
@@ -150,7 +275,6 @@ namespace incasacia
 
 						// Записываем в Excel
 
-
 						ws.Cell("T16").Value = firstLine.ToString(); // первая строка
 						ws.Cell("A18").Value = secondLine.ToString(); // вторая строка
 						ws.Cell("T60").Value = firstLine.ToString(); // вторая строка
@@ -184,6 +308,7 @@ namespace incasacia
 		private void LoadData()
 		{
 			date_time.Value = DateTime.Now;
+			date_time_lei.Value = DateTime.Now;
 			if (File.Exists(filePath))
 			{
 				string json = File.ReadAllText(filePath);
@@ -272,6 +397,136 @@ namespace incasacia
 
 			// Меняем текст кнопки
 			save.Text = isLocked ? "Сохранить" : "Изменить";
+		}
+
+		private void sum_l1000_TextChanged(object sender, EventArgs e)
+		{
+			if (int.TryParse(l1000.Text, out int num1000))
+			{
+				int sum = num1000 * 1000;
+				sum_l1000.Text = sum.ToString();
+			}
+			else
+			{
+				sum_l1000.Text = "Ошибка";
+			}
+		}
+
+		private void sum_l500_TextChanged(object sender, EventArgs e)
+		{
+			if (int.TryParse(l500.Text, out int num500))
+			{
+				int sum = num500 * 500;
+				sum_l500.Text = sum.ToString();
+			}
+			else
+			{
+				sum_l500.Text = "Ошибка";
+			}
+		}
+
+		private void sum_l200_TextChanged(object sender, EventArgs e)
+		{
+			if (int.TryParse(l200.Text, out int num200))
+			{
+				int sum = num200 * 200;
+				sum_l200.Text = sum.ToString();
+			}
+			else
+			{
+				sum_l200.Text = "Ошибка";
+			}
+		}
+
+		private void sum_l100_TextChanged(object sender, EventArgs e)
+		{
+			if (int.TryParse(l100.Text, out int num100))
+			{
+				int sum = num100 * 100;
+				sum_l100.Text = sum.ToString();
+			}
+			else
+			{
+				sum_l100.Text = "Ошибка";
+			}
+		}
+
+		private void sum_l50_TextChanged(object sender, EventArgs e)
+		{
+			if (int.TryParse(l50.Text, out int num50))
+			{
+				int sum = num50 * 50;
+				sum_l50.Text = sum.ToString();
+			}
+			else
+			{
+				sum_l50.Text = "Ошибка";
+			}
+		}
+
+		private void sum_l20_TextChanged(object sender, EventArgs e)
+		{
+			if (int.TryParse(l20.Text, out int num20))
+			{
+				int sum = num20 * 20;
+				sum_l20.Text = sum.ToString();
+			}
+			else
+			{
+				sum_l20.Text = "Ошибка";
+			}
+		}
+
+		private void sum_l10_TextChanged(object sender, EventArgs e)
+		{
+			if (int.TryParse(l10.Text, out int num10))
+			{
+				int sum = num10 * 10;
+				sum_l10.Text = sum.ToString();
+			}
+			else
+			{
+				sum_l10.Text = "Ошибка";
+			}
+		}
+
+		private void sum_l5_TextChanged(object sender, EventArgs e)
+		{
+			if (int.TryParse(l5.Text, out int num5))
+			{
+				int sum = num5 * 5;
+				sum_l5.Text = sum.ToString();
+			}
+			else
+			{
+				sum_l5.Text = "Ошибка";
+			}
+		}
+
+		private void sum_l2_TextChanged(object sender, EventArgs e)
+		{
+			if (int.TryParse(l2.Text, out int num2))
+			{
+				int sum = num2 * 2;
+				sum_l2.Text = sum.ToString();
+			}
+			else
+			{
+				sum_l2.Text = "Ошибка";
+			}
+		}
+
+		private void sum_l1_TextChanged(object sender, EventArgs e)
+		{
+			if (int.TryParse(l1.Text, out int num1))
+			{
+				int sum = num1 * 1;
+				sum_l1.Text = sum.ToString();
+			}
+			else
+			{
+				sum_l1.Text = "Ошибка";
+			}
 		}
 
 		private void sum500_TextChanged(object sender, EventArgs e)
@@ -443,6 +698,22 @@ namespace incasacia
 			}
 		}
 
+
+		private void total_sum_lei_LabelChanged(object sender, EventArgs e)
+		{
+			double sum = 0.00;
+			TextBox[] textBoxes = { sum_l1000, sum_l500, sum_l200, sum_l100, sum_l50, sum_l20, sum_l10, sum_l5, sum_l2, sum_l1 };
+
+			foreach (TextBox tb in textBoxes)
+			{
+				if (double.TryParse(tb.Text, out double value))
+				{
+					sum += value;
+				}
+			}
+			summa_lei.Text = sum.ToString("F2");
+		}
+
 		private void total_sum_LabelChanged(object sender, EventArgs e)
 		{
 			double sum = 0.00;
@@ -456,6 +727,96 @@ namespace incasacia
 				}
 			}
 			summa.Text = sum.ToString("F2");
+		}
+
+		public static string NumberToWordsLei(decimal amount)
+		{
+			if (amount == 0)
+				return "ноль лей 00 бань";
+
+			string[] units = { "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять" };
+			string[] unitsFemale = { "одна", "две", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять" };
+			string[] teens = { "одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать" };
+			string[] tens = { "десять", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто" };
+			string[] hundreds = { "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот" };
+			string[] thousandsForms = { "тысяча", "тысячи", "тысяч" };
+			string[] millionsForms = { "миллион", "миллиона", "миллионов" };
+			string[] leiForms = { "лей", "лея", "леев" };			
+
+			StringBuilder result = new StringBuilder();
+
+			long intPart = (long)Math.Floor(amount);
+			int kopeks = (int)Math.Round((amount - intPart) * 100);
+
+			int GetFormIndex(int number)
+			{
+				int n = number % 100;
+				if (n >= 11 && n <= 19) return 2;
+				int last = n % 10;
+				if (last == 1) return 0;
+				if (last >= 2 && last <= 4) return 1;
+				return 2;
+			}
+
+			void AppendTriplet(int n, bool isFemale, string[] forms)
+			{
+				if (n == 0) return;
+
+				if (n >= 100)
+				{
+					int h = n / 100;					
+					result.Append(hundreds[h - 1] + " ");					
+				}
+
+				int remainder = n % 100;
+
+				if (remainder == 10)
+				{
+					result.Append(tens[0] + " "); // "десять"
+				}
+				else if (remainder > 10 && remainder < 20)
+				{
+					result.Append(teens[remainder - 11] + " "); // "одиннадцать" и т.п.
+				}
+				else
+				{
+					int ten = remainder / 10;
+					int unit = remainder % 10;					
+
+					if (ten >= 2)
+					{
+						result.Append(tens[ten - 1] + " ");
+					}
+
+					if(unit>0)
+					{						
+						result.Append((isFemale ? unitsFemale[unit - 1] : units[unit - 1]) + " ");
+																		
+					}					
+				}
+				result.Append(forms[GetFormIndex(n)] + " ");
+			}
+
+			if (intPart >= 1000000)
+			{
+				int millions = (int)(intPart / 1000000);
+				AppendTriplet(millions, false, millionsForms);
+				intPart %= 1000000;
+			}
+
+			if (intPart >= 1000)
+			{
+				int thousands = (int)(intPart / 1000);
+				AppendTriplet(thousands, true, thousandsForms);
+				intPart %= 1000;
+			}
+
+			AppendTriplet((int)intPart, false, leiForms);
+
+			string baniWord=(kopeks == 1) ? "бань" : "баней";
+			result.Append($"{kopeks:00} {baniWord}"); // "бань" или "баней"
+
+			return result.ToString().Trim();
 		}
 
 		public static string NumberToWordsRub(decimal amount)
@@ -558,5 +919,6 @@ namespace incasacia
 
 			return result.ToString().Trim();
 		}
+		
 	}
 }
