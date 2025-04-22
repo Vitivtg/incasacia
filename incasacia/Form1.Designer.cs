@@ -155,13 +155,51 @@
 			this.bag_label = new System.Windows.Forms.Label();
 			this.date_time = new System.Windows.Forms.DateTimePicker();
 			this.data_label = new System.Windows.Forms.Label();
+			this.save_inc_usd = new System.Windows.Forms.Button();
+			this.label27 = new System.Windows.Forms.Label();
+			this.label28 = new System.Windows.Forms.Label();
+			this.label29 = new System.Windows.Forms.Label();
+			this.label30 = new System.Windows.Forms.Label();
+			this.label31 = new System.Windows.Forms.Label();
+			this.label32 = new System.Windows.Forms.Label();
+			this.label33 = new System.Windows.Forms.Label();
+			this.summa_usd = new System.Windows.Forms.Label();
+			this.total_usd = new System.Windows.Forms.Label();
+			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+			this.usd1 = new System.Windows.Forms.TextBox();
+			this.usd10 = new System.Windows.Forms.TextBox();
+			this.usd5 = new System.Windows.Forms.TextBox();
+			this.sum_usd100 = new System.Windows.Forms.TextBox();
+			this.usd100 = new System.Windows.Forms.TextBox();
+			this.sum_usd50 = new System.Windows.Forms.TextBox();
+			this.sum_usd20 = new System.Windows.Forms.TextBox();
+			this.sum_usd10 = new System.Windows.Forms.TextBox();
+			this.sum_usd5 = new System.Windows.Forms.TextBox();
+			this.sum_usd2 = new System.Windows.Forms.TextBox();
+			this.sum_usd1 = new System.Windows.Forms.TextBox();
+			this.usd20 = new System.Windows.Forms.TextBox();
+			this.usd50 = new System.Windows.Forms.TextBox();
+			this.usd2 = new System.Windows.Forms.TextBox();
+			this.lusd1 = new System.Windows.Forms.Label();
+			this.lusd2 = new System.Windows.Forms.Label();
+			this.lusd5 = new System.Windows.Forms.Label();
+			this.lusd10 = new System.Windows.Forms.Label();
+			this.lusd20 = new System.Windows.Forms.Label();
+			this.lusd50 = new System.Windows.Forms.Label();
+			this.lusd100 = new System.Windows.Forms.Label();
+			this.bags_number_usd = new System.Windows.Forms.TextBox();
+			this.bag_label_usd = new System.Windows.Forms.Label();
+			this.date_time_usd = new System.Windows.Forms.DateTimePicker();
+			this.data_label_usd = new System.Windows.Forms.Label();
 			this.setings.SuspendLayout();
 			this.settings.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
+			this.dol.SuspendLayout();
 			this.lei.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
 			this.rub.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
+			this.tableLayoutPanel4.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// setings
@@ -351,13 +389,35 @@
 			// 
 			// dol
 			// 
+			this.dol.BackColor = System.Drawing.Color.DarkGray;
+			this.dol.Controls.Add(this.save_inc_usd);
+			this.dol.Controls.Add(this.label27);
+			this.dol.Controls.Add(this.label28);
+			this.dol.Controls.Add(this.label29);
+			this.dol.Controls.Add(this.label30);
+			this.dol.Controls.Add(this.label31);
+			this.dol.Controls.Add(this.label32);
+			this.dol.Controls.Add(this.label33);
+			this.dol.Controls.Add(this.summa_usd);
+			this.dol.Controls.Add(this.total_usd);
+			this.dol.Controls.Add(this.tableLayoutPanel4);
+			this.dol.Controls.Add(this.lusd1);
+			this.dol.Controls.Add(this.lusd2);
+			this.dol.Controls.Add(this.lusd5);
+			this.dol.Controls.Add(this.lusd10);
+			this.dol.Controls.Add(this.lusd20);
+			this.dol.Controls.Add(this.lusd50);
+			this.dol.Controls.Add(this.lusd100);
+			this.dol.Controls.Add(this.bags_number_usd);
+			this.dol.Controls.Add(this.bag_label_usd);
+			this.dol.Controls.Add(this.date_time_usd);
+			this.dol.Controls.Add(this.data_label_usd);
 			this.dol.Location = new System.Drawing.Point(4, 22);
 			this.dol.Name = "dol";
 			this.dol.Padding = new System.Windows.Forms.Padding(3);
 			this.dol.Size = new System.Drawing.Size(805, 513);
 			this.dol.TabIndex = 1;
 			this.dol.Text = "Доллары";
-			this.dol.UseVisualStyleBackColor = true;
 			// 
 			// lei
 			// 
@@ -1601,6 +1661,404 @@
 			this.data_label.TabIndex = 0;
 			this.data_label.Text = "Выберите дату";
 			// 
+			// save_inc_usd
+			// 
+			this.save_inc_usd.BackColor = System.Drawing.Color.Gray;
+			this.save_inc_usd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.save_inc_usd.Location = new System.Drawing.Point(476, 292);
+			this.save_inc_usd.Name = "save_inc_usd";
+			this.save_inc_usd.Size = new System.Drawing.Size(268, 38);
+			this.save_inc_usd.TabIndex = 109;
+			this.save_inc_usd.Text = "Сохранить";
+			this.save_inc_usd.UseVisualStyleBackColor = false;
+			this.save_inc_usd.Click += new System.EventHandler(this.save_usd_click);
+			// 
+			// label27
+			// 
+			this.label27.AutoSize = true;
+			this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label27.Location = new System.Drawing.Point(473, 191);
+			this.label27.Name = "label27";
+			this.label27.Size = new System.Drawing.Size(16, 16);
+			this.label27.TabIndex = 105;
+			this.label27.Text = "X";
+			// 
+			// label28
+			// 
+			this.label28.AutoSize = true;
+			this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label28.Location = new System.Drawing.Point(473, 163);
+			this.label28.Name = "label28";
+			this.label28.Size = new System.Drawing.Size(16, 16);
+			this.label28.TabIndex = 104;
+			this.label28.Text = "X";
+			// 
+			// label29
+			// 
+			this.label29.AutoSize = true;
+			this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label29.Location = new System.Drawing.Point(473, 135);
+			this.label29.Name = "label29";
+			this.label29.Size = new System.Drawing.Size(16, 16);
+			this.label29.TabIndex = 103;
+			this.label29.Text = "X";
+			// 
+			// label30
+			// 
+			this.label30.AutoSize = true;
+			this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label30.Location = new System.Drawing.Point(473, 107);
+			this.label30.Name = "label30";
+			this.label30.Size = new System.Drawing.Size(16, 16);
+			this.label30.TabIndex = 102;
+			this.label30.Text = "X";
+			// 
+			// label31
+			// 
+			this.label31.AutoSize = true;
+			this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label31.Location = new System.Drawing.Point(473, 79);
+			this.label31.Name = "label31";
+			this.label31.Size = new System.Drawing.Size(16, 16);
+			this.label31.TabIndex = 101;
+			this.label31.Text = "X";
+			// 
+			// label32
+			// 
+			this.label32.AutoSize = true;
+			this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label32.Location = new System.Drawing.Point(473, 51);
+			this.label32.Name = "label32";
+			this.label32.Size = new System.Drawing.Size(16, 16);
+			this.label32.TabIndex = 100;
+			this.label32.Text = "X";
+			// 
+			// label33
+			// 
+			this.label33.AutoSize = true;
+			this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label33.Location = new System.Drawing.Point(473, 23);
+			this.label33.Name = "label33";
+			this.label33.Size = new System.Drawing.Size(16, 16);
+			this.label33.TabIndex = 99;
+			this.label33.Text = "X";
+			// 
+			// summa_usd
+			// 
+			this.summa_usd.AutoSize = true;
+			this.summa_usd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.summa_usd.Location = new System.Drawing.Point(613, 230);
+			this.summa_usd.MaximumSize = new System.Drawing.Size(200, 0);
+			this.summa_usd.Name = "summa_usd";
+			this.summa_usd.Size = new System.Drawing.Size(44, 20);
+			this.summa_usd.TabIndex = 98;
+			this.summa_usd.Text = "0.00";
+			// 
+			// total_usd
+			// 
+			this.total_usd.AutoSize = true;
+			this.total_usd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.total_usd.Location = new System.Drawing.Point(516, 230);
+			this.total_usd.Name = "total_usd";
+			this.total_usd.Size = new System.Drawing.Size(64, 20);
+			this.total_usd.TabIndex = 97;
+			this.total_usd.Text = "Итого:";
+			this.total_usd.UseMnemonic = false;
+			// 
+			// tableLayoutPanel4
+			// 
+			this.tableLayoutPanel4.ColumnCount = 2;
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
+			this.tableLayoutPanel4.Controls.Add(this.usd1, 0, 6);
+			this.tableLayoutPanel4.Controls.Add(this.usd10, 0, 3);
+			this.tableLayoutPanel4.Controls.Add(this.usd5, 0, 4);
+			this.tableLayoutPanel4.Controls.Add(this.sum_usd100, 1, 0);
+			this.tableLayoutPanel4.Controls.Add(this.usd100, 0, 0);
+			this.tableLayoutPanel4.Controls.Add(this.sum_usd50, 1, 1);
+			this.tableLayoutPanel4.Controls.Add(this.sum_usd20, 1, 2);
+			this.tableLayoutPanel4.Controls.Add(this.sum_usd10, 1, 3);
+			this.tableLayoutPanel4.Controls.Add(this.sum_usd5, 1, 4);
+			this.tableLayoutPanel4.Controls.Add(this.sum_usd2, 1, 5);
+			this.tableLayoutPanel4.Controls.Add(this.sum_usd1, 1, 6);
+			this.tableLayoutPanel4.Controls.Add(this.usd20, 0, 2);
+			this.tableLayoutPanel4.Controls.Add(this.usd50, 0, 1);
+			this.tableLayoutPanel4.Controls.Add(this.usd2, 0, 5);
+			this.tableLayoutPanel4.Location = new System.Drawing.Point(517, 17);
+			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+			this.tableLayoutPanel4.RowCount = 7;
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(194, 199);
+			this.tableLayoutPanel4.TabIndex = 96;
+			// 
+			// usd1
+			// 
+			this.usd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.usd1.Location = new System.Drawing.Point(3, 171);
+			this.usd1.Name = "usd1";
+			this.usd1.Size = new System.Drawing.Size(90, 22);
+			this.usd1.TabIndex = 25;
+			this.usd1.Text = "0";
+			this.usd1.TextChanged += new System.EventHandler(this.sum_usd1_TextChanged);
+			// 
+			// usd10
+			// 
+			this.usd10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.usd10.Location = new System.Drawing.Point(3, 87);
+			this.usd10.Name = "usd10";
+			this.usd10.Size = new System.Drawing.Size(90, 22);
+			this.usd10.TabIndex = 22;
+			this.usd10.Text = "0";
+			this.usd10.TextChanged += new System.EventHandler(this.sum_usd10_TextChanged);
+			// 
+			// usd5
+			// 
+			this.usd5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.usd5.Location = new System.Drawing.Point(3, 115);
+			this.usd5.Name = "usd5";
+			this.usd5.Size = new System.Drawing.Size(90, 22);
+			this.usd5.TabIndex = 23;
+			this.usd5.Text = "0";
+			this.usd5.TextChanged += new System.EventHandler(this.sum_usd5_TextChanged);
+			// 
+			// sum_usd100
+			// 
+			this.sum_usd100.Enabled = false;
+			this.sum_usd100.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_usd100.Location = new System.Drawing.Point(100, 3);
+			this.sum_usd100.Name = "sum_usd100";
+			this.sum_usd100.Size = new System.Drawing.Size(90, 22);
+			this.sum_usd100.TabIndex = 19;
+			this.sum_usd100.Text = "0";
+			this.sum_usd100.TextChanged += new System.EventHandler(this.total_sum_usd_LabelChanged);
+			// 
+			// usd100
+			// 
+			this.usd100.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.usd100.Location = new System.Drawing.Point(3, 3);
+			this.usd100.Name = "usd100";
+			this.usd100.Size = new System.Drawing.Size(90, 22);
+			this.usd100.TabIndex = 48;
+			this.usd100.Text = "0";
+			this.usd100.TextChanged += new System.EventHandler(this.sum_usd100_TextChanged);
+			// 
+			// sum_usd50
+			// 
+			this.sum_usd50.Enabled = false;
+			this.sum_usd50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_usd50.Location = new System.Drawing.Point(100, 31);
+			this.sum_usd50.Name = "sum_usd50";
+			this.sum_usd50.Size = new System.Drawing.Size(90, 22);
+			this.sum_usd50.TabIndex = 49;
+			this.sum_usd50.Text = "0";
+			this.sum_usd50.TextChanged += new System.EventHandler(this.total_sum_usd_LabelChanged);
+			// 
+			// sum_usd20
+			// 
+			this.sum_usd20.Enabled = false;
+			this.sum_usd20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_usd20.Location = new System.Drawing.Point(100, 59);
+			this.sum_usd20.Name = "sum_usd20";
+			this.sum_usd20.Size = new System.Drawing.Size(90, 22);
+			this.sum_usd20.TabIndex = 50;
+			this.sum_usd20.Text = "0";
+			this.sum_usd20.TextChanged += new System.EventHandler(this.total_sum_usd_LabelChanged);
+			// 
+			// sum_usd10
+			// 
+			this.sum_usd10.Enabled = false;
+			this.sum_usd10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_usd10.Location = new System.Drawing.Point(100, 87);
+			this.sum_usd10.Name = "sum_usd10";
+			this.sum_usd10.Size = new System.Drawing.Size(90, 22);
+			this.sum_usd10.TabIndex = 51;
+			this.sum_usd10.Text = "0";
+			this.sum_usd10.TextChanged += new System.EventHandler(this.total_sum_usd_LabelChanged);
+			// 
+			// sum_usd5
+			// 
+			this.sum_usd5.Enabled = false;
+			this.sum_usd5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_usd5.Location = new System.Drawing.Point(100, 115);
+			this.sum_usd5.Name = "sum_usd5";
+			this.sum_usd5.Size = new System.Drawing.Size(90, 22);
+			this.sum_usd5.TabIndex = 52;
+			this.sum_usd5.Text = "0";
+			this.sum_usd5.TextChanged += new System.EventHandler(this.total_sum_usd_LabelChanged);
+			// 
+			// sum_usd2
+			// 
+			this.sum_usd2.Enabled = false;
+			this.sum_usd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_usd2.Location = new System.Drawing.Point(100, 143);
+			this.sum_usd2.Name = "sum_usd2";
+			this.sum_usd2.Size = new System.Drawing.Size(90, 22);
+			this.sum_usd2.TabIndex = 53;
+			this.sum_usd2.Text = "0";
+			this.sum_usd2.TextChanged += new System.EventHandler(this.total_sum_usd_LabelChanged);
+			// 
+			// sum_usd1
+			// 
+			this.sum_usd1.Enabled = false;
+			this.sum_usd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.sum_usd1.Location = new System.Drawing.Point(100, 171);
+			this.sum_usd1.Name = "sum_usd1";
+			this.sum_usd1.Size = new System.Drawing.Size(90, 22);
+			this.sum_usd1.TabIndex = 54;
+			this.sum_usd1.Text = "0";
+			this.sum_usd1.TextChanged += new System.EventHandler(this.total_sum_usd_LabelChanged);
+			// 
+			// usd20
+			// 
+			this.usd20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.usd20.Location = new System.Drawing.Point(3, 59);
+			this.usd20.Name = "usd20";
+			this.usd20.Size = new System.Drawing.Size(90, 22);
+			this.usd20.TabIndex = 21;
+			this.usd20.Text = "0";
+			this.usd20.TextChanged += new System.EventHandler(this.sum_usd20_TextChanged);
+			// 
+			// usd50
+			// 
+			this.usd50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.usd50.Location = new System.Drawing.Point(3, 31);
+			this.usd50.Name = "usd50";
+			this.usd50.Size = new System.Drawing.Size(90, 22);
+			this.usd50.TabIndex = 20;
+			this.usd50.Text = "0";
+			this.usd50.TextChanged += new System.EventHandler(this.sum_usd50_TextChanged);
+			// 
+			// usd2
+			// 
+			this.usd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.usd2.Location = new System.Drawing.Point(3, 143);
+			this.usd2.Name = "usd2";
+			this.usd2.Size = new System.Drawing.Size(90, 22);
+			this.usd2.TabIndex = 24;
+			this.usd2.Text = "0";
+			this.usd2.TextChanged += new System.EventHandler(this.sum_usd2_TextChanged);
+			// 
+			// lusd1
+			// 
+			this.lusd1.AutoSize = true;
+			this.lusd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.lusd1.Location = new System.Drawing.Point(430, 191);
+			this.lusd1.Margin = new System.Windows.Forms.Padding(0);
+			this.lusd1.Name = "lusd1";
+			this.lusd1.Size = new System.Drawing.Size(17, 17);
+			this.lusd1.TabIndex = 95;
+			this.lusd1.Text = "1";
+			// 
+			// lusd2
+			// 
+			this.lusd2.AutoSize = true;
+			this.lusd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.lusd2.Location = new System.Drawing.Point(430, 163);
+			this.lusd2.Margin = new System.Windows.Forms.Padding(0);
+			this.lusd2.Name = "lusd2";
+			this.lusd2.Size = new System.Drawing.Size(17, 17);
+			this.lusd2.TabIndex = 94;
+			this.lusd2.Text = "2";
+			// 
+			// lusd5
+			// 
+			this.lusd5.AutoSize = true;
+			this.lusd5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.lusd5.Location = new System.Drawing.Point(430, 135);
+			this.lusd5.Margin = new System.Windows.Forms.Padding(0);
+			this.lusd5.Name = "lusd5";
+			this.lusd5.Size = new System.Drawing.Size(17, 17);
+			this.lusd5.TabIndex = 93;
+			this.lusd5.Text = "5";
+			// 
+			// lusd10
+			// 
+			this.lusd10.AutoSize = true;
+			this.lusd10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.lusd10.Location = new System.Drawing.Point(421, 107);
+			this.lusd10.Margin = new System.Windows.Forms.Padding(0);
+			this.lusd10.Name = "lusd10";
+			this.lusd10.Size = new System.Drawing.Size(26, 17);
+			this.lusd10.TabIndex = 92;
+			this.lusd10.Text = "10";
+			// 
+			// lusd20
+			// 
+			this.lusd20.AutoSize = true;
+			this.lusd20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.lusd20.Location = new System.Drawing.Point(421, 79);
+			this.lusd20.Margin = new System.Windows.Forms.Padding(0);
+			this.lusd20.Name = "lusd20";
+			this.lusd20.Size = new System.Drawing.Size(26, 17);
+			this.lusd20.TabIndex = 91;
+			this.lusd20.Text = "20";
+			// 
+			// lusd50
+			// 
+			this.lusd50.AutoSize = true;
+			this.lusd50.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.lusd50.Location = new System.Drawing.Point(421, 51);
+			this.lusd50.Margin = new System.Windows.Forms.Padding(0);
+			this.lusd50.Name = "lusd50";
+			this.lusd50.Size = new System.Drawing.Size(26, 17);
+			this.lusd50.TabIndex = 90;
+			this.lusd50.Text = "50";
+			// 
+			// lusd100
+			// 
+			this.lusd100.AutoSize = true;
+			this.lusd100.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.lusd100.Location = new System.Drawing.Point(412, 23);
+			this.lusd100.Margin = new System.Windows.Forms.Padding(0);
+			this.lusd100.Name = "lusd100";
+			this.lusd100.Size = new System.Drawing.Size(35, 17);
+			this.lusd100.TabIndex = 89;
+			this.lusd100.Text = "100";
+			// 
+			// bags_number_usd
+			// 
+			this.bags_number_usd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.bags_number_usd.Location = new System.Drawing.Point(161, 65);
+			this.bags_number_usd.Name = "bags_number_usd";
+			this.bags_number_usd.Size = new System.Drawing.Size(82, 23);
+			this.bags_number_usd.TabIndex = 85;
+			// 
+			// bag_label_usd
+			// 
+			this.bag_label_usd.AutoSize = true;
+			this.bag_label_usd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.bag_label_usd.Location = new System.Drawing.Point(17, 68);
+			this.bag_label_usd.Name = "bag_label_usd";
+			this.bag_label_usd.Size = new System.Drawing.Size(73, 17);
+			this.bag_label_usd.TabIndex = 84;
+			this.bag_label_usd.Text = "Сумка №";
+			// 
+			// date_time_usd
+			// 
+			this.date_time_usd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.date_time_usd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.date_time_usd.Location = new System.Drawing.Point(160, 23);
+			this.date_time_usd.Name = "date_time_usd";
+			this.date_time_usd.Size = new System.Drawing.Size(83, 23);
+			this.date_time_usd.TabIndex = 83;
+			this.date_time_usd.Value = new System.DateTime(2025, 3, 12, 0, 0, 0, 0);
+			// 
+			// data_label_usd
+			// 
+			this.data_label_usd.AutoSize = true;
+			this.data_label_usd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.data_label_usd.Location = new System.Drawing.Point(17, 28);
+			this.data_label_usd.Name = "data_label_usd";
+			this.data_label_usd.Size = new System.Drawing.Size(121, 17);
+			this.data_label_usd.TabIndex = 82;
+			this.data_label_usd.Text = "Выберите дату";
+			// 
 			// incas
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1617,6 +2075,8 @@
 			this.settings.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
+			this.dol.ResumeLayout(false);
+			this.dol.PerformLayout();
 			this.lei.ResumeLayout(false);
 			this.lei.PerformLayout();
 			this.tableLayoutPanel3.ResumeLayout(false);
@@ -1625,6 +2085,8 @@
 			this.rub.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
+			this.tableLayoutPanel4.ResumeLayout(false);
+			this.tableLayoutPanel4.PerformLayout();
 			this.ResumeLayout(false);
 
 		}	
@@ -1757,6 +2219,42 @@
 		private System.Windows.Forms.TextBox sum_l2;
 		private System.Windows.Forms.TextBox l1;
 		private System.Windows.Forms.TextBox sum_l1;
+		private System.Windows.Forms.Button save_inc_usd;
+		private System.Windows.Forms.Label label27;
+		private System.Windows.Forms.Label label28;
+		private System.Windows.Forms.Label label29;
+		private System.Windows.Forms.Label label30;
+		private System.Windows.Forms.Label label31;
+		private System.Windows.Forms.Label label32;
+		private System.Windows.Forms.Label label33;
+		private System.Windows.Forms.Label summa_usd;
+		private System.Windows.Forms.Label total_usd;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+		private System.Windows.Forms.TextBox usd1;
+		private System.Windows.Forms.TextBox usd10;
+		private System.Windows.Forms.TextBox usd5;
+		private System.Windows.Forms.TextBox sum_usd100;
+		private System.Windows.Forms.TextBox usd100;
+		private System.Windows.Forms.TextBox sum_usd50;
+		private System.Windows.Forms.TextBox sum_usd20;
+		private System.Windows.Forms.TextBox sum_usd10;
+		private System.Windows.Forms.TextBox sum_usd5;
+		private System.Windows.Forms.TextBox sum_usd2;
+		private System.Windows.Forms.TextBox sum_usd1;
+		private System.Windows.Forms.TextBox usd20;
+		private System.Windows.Forms.TextBox usd50;
+		private System.Windows.Forms.TextBox usd2;
+		private System.Windows.Forms.Label lusd1;
+		private System.Windows.Forms.Label lusd2;
+		private System.Windows.Forms.Label lusd5;
+		private System.Windows.Forms.Label lusd10;
+		private System.Windows.Forms.Label lusd20;
+		private System.Windows.Forms.Label lusd50;
+		private System.Windows.Forms.Label lusd100;
+		private System.Windows.Forms.TextBox bags_number_usd;
+		private System.Windows.Forms.Label bag_label_usd;
+		private System.Windows.Forms.DateTimePicker date_time_usd;
+		private System.Windows.Forms.Label data_label_usd;
 	}
 }
 
