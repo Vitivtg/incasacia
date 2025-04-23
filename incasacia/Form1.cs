@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
 using ClosedXML.Excel;
 using System.Reflection;
-using DocumentFormat.OpenXml.Drawing.Diagrams;
 using System.Text.RegularExpressions;
-using DocumentFormat.OpenXml.Office2010.ExcelAc;
 
 namespace incasacia
 {
@@ -65,7 +59,7 @@ namespace incasacia
 			}
 
 			string baseFileName = date_time_usd.Text;
-			string extension = ".xlsx";
+			string extension = "_usd.xlsx";
 			string excelFilePath = Path.Combine(folderPath, baseFileName + extension);
 
 			int suffix = 1;
@@ -84,8 +78,6 @@ namespace incasacia
 			}
 			else
 			{
-				File.Copy(templatePath, excelFilePath, true);
-
 				using (var workbook = new XLWorkbook(templatePath))
 				{
 					var ws = workbook.Worksheet(1);
@@ -98,6 +90,8 @@ namespace incasacia
 					}
 					else
 					{
+						File.Copy(templatePath, excelFilePath, true);
+
 						ws.Cell("D7").Value = azs.Text + "  " + company.Text; //от кого
 						ws.Cell("D51").Value = azs.Text + "  " + company.Text;//от кого
 						ws.Cell("D94").Value = azs.Text + "  " + company.Text;//от кого					
@@ -106,9 +100,9 @@ namespace incasacia
 						ws.Cell("B48").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 						ws.Cell("B91").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 
-						ws.Cell("R9").Value = schet_usd.Text;//счет №	
-						ws.Cell("R53").Value = schet_usd.Text;//счет №
-						ws.Cell("R96").Value = schet_usd.Text;//счет №
+						ws.Cell("S9").Value = schet_usd.Text;//счет №	
+						ws.Cell("S53").Value = schet_usd.Text;//счет №
+						ws.Cell("S96").Value = schet_usd.Text;//счет №
 
 						ws.Cell("E9").Value = company.Text;//наименование банка
 						ws.Cell("E53").Value = company.Text;//наименование банка
@@ -191,7 +185,7 @@ namespace incasacia
 			}
 
 			string baseFileName = date_time_lei.Text;
-			string extension = ".xlsx";
+			string extension = "_lei.xlsx";
 			string excelFilePath = Path.Combine(folderPath, baseFileName + extension);
 
 			int suffix = 1;
@@ -210,8 +204,6 @@ namespace incasacia
 			}
 			else
 			{
-				File.Copy(templatePath, excelFilePath, true);
-
 				using (var workbook = new XLWorkbook(templatePath))
 				{
 					var ws = workbook.Worksheet(1);
@@ -224,6 +216,8 @@ namespace incasacia
 					}
 					else
 					{
+						File.Copy(templatePath, excelFilePath, true);
+
 						ws.Cell("D7").Value = azs.Text + "  " + company.Text; //от кого
 						ws.Cell("D51").Value = azs.Text + "  " + company.Text;//от кого
 						ws.Cell("D94").Value = azs.Text + "  " + company.Text;//от кого					
@@ -232,9 +226,9 @@ namespace incasacia
 						ws.Cell("B48").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 						ws.Cell("B91").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 
-						ws.Cell("R9").Value = schet_lei.Text;//счет №	
-						ws.Cell("R53").Value = schet_lei.Text;//счет №
-						ws.Cell("R96").Value = schet_lei.Text;//счет №
+						ws.Cell("S9").Value = schet_lei.Text;//счет №	
+						ws.Cell("S53").Value = schet_lei.Text;//счет №
+						ws.Cell("S96").Value = schet_lei.Text;//счет №
 
 						ws.Cell("E9").Value = company.Text;//наименование банка
 						ws.Cell("E53").Value = company.Text;//наименование банка
@@ -317,7 +311,7 @@ namespace incasacia
 			}
 
 			string baseFileName = date_time.Text;
-			string extension = ".xlsx";
+			string extension = "_rub.xlsx";
 			string excelFilePath = Path.Combine(folderPath, baseFileName + extension);
 
 			int suffix = 1;
@@ -336,8 +330,6 @@ namespace incasacia
 			}
 			else
 			{
-				File.Copy(templatePath, excelFilePath, true);
-
 				using (var workbook = new XLWorkbook(templatePath))
 				{
 					var ws = workbook.Worksheet(1);
@@ -350,6 +342,8 @@ namespace incasacia
 					}
 					else
 					{
+						File.Copy(templatePath, excelFilePath, true);
+
 						ws.Cell("D7").Value = azs.Text + "  " + company.Text; //от кого
 						ws.Cell("D51").Value = azs.Text + "  " + company.Text;//от кого
 						ws.Cell("D94").Value = azs.Text + "  " + company.Text;//от кого					
@@ -358,9 +352,9 @@ namespace incasacia
 						ws.Cell("B48").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 						ws.Cell("B91").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 
-						ws.Cell("R9").Value = schet_rub.Text;//счет №	
-						ws.Cell("R53").Value = schet_rub.Text;//счет №
-						ws.Cell("R96").Value = schet_rub.Text;//счет №
+						ws.Cell("S9").Value = schet_rub.Text;//счет №	
+						ws.Cell("S53").Value = schet_rub.Text;//счет №
+						ws.Cell("S96").Value = schet_rub.Text;//счет №
 
 						ws.Cell("E9").Value = company.Text;//наименование банка
 						ws.Cell("E53").Value = company.Text;//наименование банка
