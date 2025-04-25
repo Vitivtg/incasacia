@@ -13,12 +13,31 @@ namespace incasacia
 {
 	public partial class incas : Form
 	{
-		private string filePath = "data_file.json";
+		private string filePath;
 
 		public incas()
 		{
 			InitializeComponent();
+			InitFilePath();
 			LoadData();
+		}
+
+		private void InitFilePath()
+		{
+			string appDataFolder = Path.Combine(
+				Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+				"incasacia");
+
+			// Создаём папку, если её нет
+			Directory.CreateDirectory(appDataFolder);
+
+			filePath = Path.Combine(appDataFolder, "data_file.json");
+
+			// Если файл не существует — создаём его
+			if (!File.Exists(filePath))
+			{
+				File.WriteAllText(filePath, "[]"); // Или другой стартовый JSON
+			}
 		}
 
 		private string ExtractExcelTemplate()
@@ -29,10 +48,12 @@ namespace incasacia
 
 			if (!File.Exists(templatePath))
 			{
-				using (Stream resourcesStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("incasacia.Resources.sample.xlsx"))
+				using (Stream resourcesStream = Assembly.GetExecutingAssembly()
+					.GetManifestResourceStream("incasacia.Resources.sample.xlsx"))
 				{
 					if (resourcesStream != null)
 					{
+						Directory.CreateDirectory(folderPath);
 						using (FileStream fileStream = new FileStream(templatePath, FileMode.Create, FileAccess.Write))
 						{
 							resourcesStream.CopyTo(fileStream);
