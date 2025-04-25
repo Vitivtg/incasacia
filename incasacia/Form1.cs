@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
 using ClosedXML.Excel;
 using System.Reflection;
-using DocumentFormat.OpenXml.Drawing.Diagrams;
 using System.Text.RegularExpressions;
-using DocumentFormat.OpenXml.Office2010.ExcelAc;
 
 namespace incasacia
 {
@@ -30,7 +24,7 @@ namespace incasacia
 		private string ExtractExcelTemplate()
 		{
 			string folderPath = Path.Combine(
-				Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "incasation");
+				Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "инкассация");
 			string templatePath = Path.Combine(folderPath, "sample.xlsx");
 
 			if (!File.Exists(templatePath))
@@ -57,7 +51,7 @@ namespace incasacia
 		private void save_usd_click(object sender, EventArgs e)
 		{
 			string folderPath = Path.Combine(
-				Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "incasation", "usd");
+				Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "инкассация", "usd");
 
 			if (!Directory.Exists(folderPath))
 			{
@@ -65,7 +59,7 @@ namespace incasacia
 			}
 
 			string baseFileName = date_time_usd.Text;
-			string extension = ".xlsx";
+			string extension = "_usd.xlsx";
 			string excelFilePath = Path.Combine(folderPath, baseFileName + extension);
 
 			int suffix = 1;
@@ -84,20 +78,38 @@ namespace incasacia
 			}
 			else
 			{
-				File.Copy(templatePath, excelFilePath, true);
-
 				using (var workbook = new XLWorkbook(templatePath))
 				{
 					var ws = workbook.Worksheet(1);
 					string input = bags_number_usd.Text;
+					int errorCount = 0;
+
+					List<Label> banknoteBox = new List<Label> { lusd100, lusd50, lusd20, lusd10, lusd5, lusd2, lusd1 };
+					List<TextBox> banknoteCount = new List<TextBox> { usd100, usd50, usd20, usd10, usd5, usd2, usd1 };
+					List<TextBox> banknoteSum = new List<TextBox> { sum_usd100, sum_usd50, sum_usd20, sum_usd10, sum_usd5, sum_usd2, sum_usd1 };
+
+					foreach (var sum in banknoteSum)
+					{
+						if (sum.Text == "Ошибка")
+						{
+							errorCount++;
+						}
+					}
 
 					if (!Regex.IsMatch(input, @"^\d{3}\/\d$") || !DateTime.TryParse(date_time_usd.Text, out DateTime date))
 					{
-						MessageBox.Show("Неверный формат номера мешка или даты!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						MessageBox.Show("Неверный формат номера мешка!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						return;
+					}
+					else if (errorCount > 0)
+					{
+						MessageBox.Show("Ошибка в расчетах суммы банкнот!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 						return;
 					}
 					else
 					{
+						File.Copy(templatePath, excelFilePath, true);
+
 						ws.Cell("D7").Value = azs.Text + "  " + company.Text; //от кого
 						ws.Cell("D51").Value = azs.Text + "  " + company.Text;//от кого
 						ws.Cell("D94").Value = azs.Text + "  " + company.Text;//от кого					
@@ -106,9 +118,9 @@ namespace incasacia
 						ws.Cell("B48").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 						ws.Cell("B91").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 
-						ws.Cell("R9").Value = schet_usd.Text;//счет №	
-						ws.Cell("R53").Value = schet_usd.Text;//счет №
-						ws.Cell("R96").Value = schet_usd.Text;//счет №
+						ws.Cell("S9").Value = schet_usd.Text;//счет №	
+						ws.Cell("S53").Value = schet_usd.Text;//счет №
+						ws.Cell("S96").Value = schet_usd.Text;//счет №
 
 						ws.Cell("E9").Value = company.Text;//наименование банка
 						ws.Cell("E53").Value = company.Text;//наименование банка
@@ -156,11 +168,7 @@ namespace incasacia
 						ws.Cell("A62").Value = secondLine.ToString(); // вторая строка
 						ws.Cell("T103").Value = firstLine.ToString(); // вторая строка
 						ws.Cell("A105").Value = secondLine.ToString(); // вторая строка
-
-						List<Label> banknoteBox = new List<Label> { lusd100, lusd50, lusd20, lusd10, lusd5, lusd2, lusd1 };
-						List<TextBox> banknoteCount = new List<TextBox> { usd100, usd50, usd20, usd10, usd5, usd2, usd1 };
-						List<TextBox> banknoteSum = new List<TextBox> { sum_usd100, sum_usd50, sum_usd20, sum_usd10, sum_usd5, sum_usd2, sum_usd1 };
-
+						
 						int startRow = 210;
 
 						foreach (var box in banknoteCount)
@@ -175,6 +183,7 @@ namespace incasacia
 						}
 
 						workbook.SaveAs(excelFilePath);
+						MessageBox.Show("Файл сохранен", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 					}
 				}
 			}
@@ -183,7 +192,7 @@ namespace incasacia
 		private void save_lei_click(object sender, EventArgs e)
 		{
 			string folderPath = Path.Combine(
-				Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "incasation", "lei");
+				Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "инкассация", "lei");
 
 			if (!Directory.Exists(folderPath))
 			{
@@ -191,7 +200,7 @@ namespace incasacia
 			}
 
 			string baseFileName = date_time_lei.Text;
-			string extension = ".xlsx";
+			string extension = "_lei.xlsx";
 			string excelFilePath = Path.Combine(folderPath, baseFileName + extension);
 
 			int suffix = 1;
@@ -210,20 +219,38 @@ namespace incasacia
 			}
 			else
 			{
-				File.Copy(templatePath, excelFilePath, true);
-
 				using (var workbook = new XLWorkbook(templatePath))
 				{
 					var ws = workbook.Worksheet(1);
 					string input = bags_number_lei.Text;
+					int errorCount = 0;
+
+					List<Label> banknoteBox = new List<Label> { ll1000, ll500, ll200, ll100, ll50, ll20, ll10, ll5, ll2, ll1 };
+					List<TextBox> banknoteCount = new List<TextBox> { l1000, l500, l200, l100, l50, l20, l10, l5, l2, l1 };
+					List<TextBox> banknoteSum = new List<TextBox> { sum_l1000, sum_l500, sum_l200, sum_l100, sum_l50, sum_l20, sum_l10, sum_l5, sum_l2, sum_l1 };
+
+					foreach (var sum in banknoteSum)
+					{
+						if (sum.Text == "Ошибка")
+						{
+							errorCount++;
+						}
+					}
 
 					if (!Regex.IsMatch(input, @"^\d{3}\/\d$") || !DateTime.TryParse(date_time_lei.Text, out DateTime date))
 					{
-						MessageBox.Show("Неверный формат номера мешка или даты!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						MessageBox.Show("Неверный формат номера мешка!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						return;
+					}
+					else if(errorCount>0)
+					{
+						MessageBox.Show("Ошибка в расчетах суммы банкнот!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 						return;
 					}
 					else
 					{
+						File.Copy(templatePath, excelFilePath, true);
+
 						ws.Cell("D7").Value = azs.Text + "  " + company.Text; //от кого
 						ws.Cell("D51").Value = azs.Text + "  " + company.Text;//от кого
 						ws.Cell("D94").Value = azs.Text + "  " + company.Text;//от кого					
@@ -232,9 +259,9 @@ namespace incasacia
 						ws.Cell("B48").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 						ws.Cell("B91").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 
-						ws.Cell("R9").Value = schet_lei.Text;//счет №	
-						ws.Cell("R53").Value = schet_lei.Text;//счет №
-						ws.Cell("R96").Value = schet_lei.Text;//счет №
+						ws.Cell("S9").Value = schet_lei.Text;//счет №	
+						ws.Cell("S53").Value = schet_lei.Text;//счет №
+						ws.Cell("S96").Value = schet_lei.Text;//счет №
 
 						ws.Cell("E9").Value = company.Text;//наименование банка
 						ws.Cell("E53").Value = company.Text;//наименование банка
@@ -283,10 +310,6 @@ namespace incasacia
 						ws.Cell("T103").Value = firstLine.ToString(); // вторая строка
 						ws.Cell("A105").Value = secondLine.ToString(); // вторая строка
 
-						List<Label> banknoteBox = new List<Label> { ll1000, ll500, ll200, ll100, ll50, ll20, ll10, ll5, ll2, ll1 };
-						List<TextBox> banknoteCount = new List<TextBox> { l1000, l500, l200, l100, l50, l20, l10, l5, l2, l1 };
-						List<TextBox> banknoteSum = new List<TextBox> { sum_l1000, sum_l500, sum_l200, sum_l100, sum_l50, sum_l20, sum_l10, sum_l5, sum_l2, sum_l1 };
-
 						int startRow = 210;
 
 						foreach (var box in banknoteCount)
@@ -301,6 +324,7 @@ namespace incasacia
 						}
 
 						workbook.SaveAs(excelFilePath);
+						MessageBox.Show("Файл сохранен", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 					}
 				}
 			}
@@ -309,7 +333,7 @@ namespace incasacia
 		private void save_rub_click(object sender, EventArgs e)
 		{
 			string folderPath = Path.Combine(
-				Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "incasation", "rub");
+				Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "инкассация", "rub");
 
 			if (!Directory.Exists(folderPath))
 			{
@@ -317,7 +341,7 @@ namespace incasacia
 			}
 
 			string baseFileName = date_time.Text;
-			string extension = ".xlsx";
+			string extension = "_rub.xlsx";
 			string excelFilePath = Path.Combine(folderPath, baseFileName + extension);
 
 			int suffix = 1;
@@ -336,20 +360,42 @@ namespace incasacia
 			}
 			else
 			{
-				File.Copy(templatePath, excelFilePath, true);
-
 				using (var workbook = new XLWorkbook(templatePath))
 				{
 					var ws = workbook.Worksheet(1);
 					string input = bags_number.Text;
+					int errorCount = 0;
+
+					List<Label> banknoteBox = new List<Label> { m500, m200, m100, m50, m25, m10, m5, m3, m1, k50, k25, k10, k5 };
+					List<TextBox> banknoteCount = new List<TextBox> { r500, r200, r100, r50, r25, r10, r5, r3, r1, rc50, rc25, rc10, rc5 };
+					List<TextBox> banknoteSum = new List<TextBox> { sum500, sum200, sum100, sum50, sum25, sum10, sum5, sum3, sum1, sum_rc50, sum_rc25, sum_rc10, sum_rc5 };
+
+					foreach (var sum in banknoteSum)
+					{
+						if (sum.Text == "Ошибка")
+						{
+							errorCount++;
+						}
+					}
 
 					if (!Regex.IsMatch(input, @"^\d{3}\/\d$") || !DateTime.TryParse(date_time.Text, out DateTime date))
 					{
-						MessageBox.Show("Неверный формат номера мешка или даты!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						MessageBox.Show("Неверный формат номера мешка!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						return;
+					}
+					else if(errorCount > 0)
+					{
+						MessageBox.Show("Ошибка в расчетах суммы банкнот!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 						return;
 					}
 					else
 					{
+						File.Copy(templatePath, excelFilePath, true);
+
+						ws.Cell("AD13").Value = "02";
+						ws.Cell("AD57").Value = "02";
+						ws.Cell("AD100").Value = "02";
+
 						ws.Cell("D7").Value = azs.Text + "  " + company.Text; //от кого
 						ws.Cell("D51").Value = azs.Text + "  " + company.Text;//от кого
 						ws.Cell("D94").Value = azs.Text + "  " + company.Text;//от кого					
@@ -358,9 +404,9 @@ namespace incasacia
 						ws.Cell("B48").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 						ws.Cell("B91").Value = date.ToString("dd MMMM yyyy года", new System.Globalization.CultureInfo("ru-RU"));
 
-						ws.Cell("R9").Value = schet_rub.Text;//счет №	
-						ws.Cell("R53").Value = schet_rub.Text;//счет №
-						ws.Cell("R96").Value = schet_rub.Text;//счет №
+						ws.Cell("S9").Value = schet_rub.Text;//счет №	
+						ws.Cell("S53").Value = schet_rub.Text;//счет №
+						ws.Cell("S96").Value = schet_rub.Text;//счет №
 
 						ws.Cell("E9").Value = company.Text;//наименование банка
 						ws.Cell("E53").Value = company.Text;//наименование банка
@@ -407,26 +453,23 @@ namespace incasacia
 						ws.Cell("T60").Value = firstLine.ToString(); // вторая строка
 						ws.Cell("A62").Value = secondLine.ToString(); // вторая строка
 						ws.Cell("T103").Value = firstLine.ToString(); // вторая строка
-						ws.Cell("A105").Value = secondLine.ToString(); // вторая строка
-
-						List<Label> banknoteBox = new List<Label> { m500, m200, m100, m50, m25, m10, m5, m3, m1, k50, k25, k10, k5 };
-						List<TextBox> banknoteCount = new List<TextBox> { r500, r200, r100, r50, r25, r10, r5, r3, r1, rc50, rc25, rc10, rc5 };
-						List<TextBox> banknoteSum = new List<TextBox> { sum500, sum200, sum100, sum50, sum25, sum10, sum5, sum3, sum1, sum_rc50, sum_rc25, sum_rc10, sum_rc5 };
+						ws.Cell("A105").Value = secondLine.ToString(); // вторая строка					
 
 						int startRow = 210;
 
 						foreach (var box in banknoteCount)
 						{
-							if(!string.IsNullOrWhiteSpace(box.Text) && box.Text!="0")
+							if (!string.IsNullOrWhiteSpace(box.Text) && box.Text != "0")
 							{
 								ws.Cell($"B{startRow}").Value = banknoteBox[banknoteCount.IndexOf(box)].Text;
-								ws.Cell($"J{startRow}").Value = banknoteCount[banknoteCount.IndexOf(box)].Text;	
+								ws.Cell($"J{startRow}").Value = banknoteCount[banknoteCount.IndexOf(box)].Text;
 								ws.Cell($"AA{startRow}").Value = banknoteSum[banknoteCount.IndexOf(box)].Text;
-								startRow+=2;								
+								startRow += 2;
 							}
 						}
 
 						workbook.SaveAs(excelFilePath);
+						MessageBox.Show("Файл сохранен", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 					}
 				}
 			}
